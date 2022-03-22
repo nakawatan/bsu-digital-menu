@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="IntegrityNet">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>Digital Menu</title>
+    <link rel="shortcut icon" href="/static/app-v2/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/app-v2/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/static/app-v2/css/base.css">
+    <link rel="stylesheet" href="/static/app-v2/css/vendor.css">
+    <link rel="stylesheet" href="/static/app-v2/css/main.css">
+
+    <script src="/static/app-v2/js/modernizr.js"></script>
+    <script src="/static/app-v2/js/pace.min.js"></script>
+
+</head>
+<body class="zapp-onboarding">
+    <header class="header header-top">
+        <div class="row narrowest header-nav">
+            <div class="col-four header-nav--btn-left">
+                <a class="ordering-btn mobile-btn previousButton"><i class="mdi mdi-arrow-left"></i></a>
+            </div>
+            <div class="col-four header-nav--center">
+                <img hidden src="/static/app-v2/img/icons/resto-logo.png" alt="Resto Logo" class="resto-logo">
+            </div>
+            <div class="col-four header-nav--btn-right">
+                <a hidden href="customer.html" class="ordering-btn flat-btn medium-btn">Skip</a>
+                <a href="customer.html" class="ordering-btn mobile-btn"><span>Skip</span></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="s-section">
+        <div class="row narrowest">
+            <div class="col-full">
+                <div class="onboarding-slide--wrapper">
+                    <div class="onboarding-slide--item">
+                        <div class="onboarding-slide--text">
+                            <h2>Onboarding 01</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint autem sequi enim doloribus amet fugit.</p>
+                        </div>
+    
+                        <div class="onboarding-slide--illustration">
+                            <img src="/static/app-v2/img/illustrations/undraw_setup_wizard_r6mr (2).svg" alt="">
+                        </div>
+                    </div>
+                    <div class="onboarding-slide--item">
+                        <div class="onboarding-slide--text">
+                            <h2>Onboarding 02</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint autem sequi enim doloribus amet fugit.</p>
+                        </div>
+    
+                        <div class="onboarding-slide--illustration">
+                            <img src="/static/app-v2/img/illustrations/undraw_onboarding_o8mv (1).svg" alt="">
+                        </div>
+                    </div>
+                    <div class="onboarding-slide--item">
+                        <div class="onboarding-slide--text">
+                            <h2>Onboarding 03</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint autem sequi enim doloribus amet fugit.</p>
+                        </div>
+    
+                        <div class="onboarding-slide--illustration">
+                            <img src="/static/app-v2/img/illustrations/undraw_completed_ngx6.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cta-wrapper cta-bottom">
+        <div class="row narrowest">
+            <div class="onboarding-slide--cta cta-next">
+                <a class="btn btn--primary btn--pill full-width onboarding-btn--next" data-slide="2">Next <i class="mdi mdi-chevron-right"></i></a>
+            </div>
+            <div class="onboarding-slide--cta cta-start">
+                <a href="customer.html" class="btn btn--primary btn--pill full-width onboarding-btn--start">Let's Start</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app-v2/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/app-v2/js/plugins.js"></script>
+    <script src="/static/app-v2/js/main.js"></script>
+
+    <script>
+        $('a.onboarding-btn--next[data-slide]').unbind().click(function(e) {
+            e.preventDefault();
+
+            var slideno = $(this).data('slide');
+            $('.onboarding-slide--wrapper').slick('slickGoTo', slideno - 1);
+            $(this).data('slide', $(this).data('slide') + 1);
+
+            if (slideno == 3) {
+                $('.cta-next').hide();
+                $('.cta-start').show();
+            }
+        });
+    </script>
+</body>
+</html>

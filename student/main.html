@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="IntegrityNet">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>Digital Menu</title>
+    <link rel="shortcut icon" href="/static/app-v2/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/app-v2/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/static/app-v2/css/base.css">
+    <link rel="stylesheet" href="/static/app-v2/css/vendor.css">
+    <link rel="stylesheet" href="/static/app-v2/css/main.css">
+
+    <script src="/static/app-v2/js/modernizr.js"></script>
+    <script src="/static/app-v2/js/pace.min.js"></script>
+
+</head>
+
+<body class="zapp-main">
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale-pulse-out">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <header class="header header-top">
+        <div class="row narrowest header-nav">
+            <div class="col-two header-nav--btn-left">
+                <a class="ordering-btn mobile-btn openSideNavMenu"><i class="mdi mdi-menu"></i></a>
+            </div>
+            <div class="col-eight header-nav--center">
+                <img src="/static/app-v2/img/logo.png" alt="Resto Logo" class="resto-logo">
+            </div>
+            <div class="col-two header-nav--btn-right">
+                <a class="ordering-btn mobile-btn openSideNavProfile"><i class="mdi mdi-account-circle"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav nav-bottom">
+        <div class="row narrowest block-1-4 main-nav--wrapper">
+            <div class="col-block">
+                <div class="main-nav--item active" data-nav="main-home">
+                    <div class="main-nav--icon">
+                        <i class="mdi mdi-home-variant"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-block">
+                <div class="main-nav--item" data-nav="main-filters">
+                    <div class="main-nav--icon">
+                        <i class="mdi mdi-filter-variant"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-block">
+                <div class="main-nav--item" data-nav="main-search">
+                    <div class="main-nav--icon">
+                        <i class="mdi mdi-magnify"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-block">
+                <div class="main-nav--item" data-nav="main-cart">
+                    <div class="main-nav--icon">
+                        <i class="mdi mdi-shopping"></i>
+                    </div>
+
+                    <span class="item-cart--count">3</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="side-nav nav-left nav-menu">
+        <div class="row narrowest header-nav">
+            <div class="col-two header-nav--btn-left">
+                <a class="ordering-btn mobile-btn openLanguage"><i class="mdi mdi-web"></i></a>
+            </div>
+            <div class="col-eight header-nav--center">
+                <h5>Menu</h5>
+            </div>
+            <div class="col-two header-nav--btn-right">
+                <a class="ordering-btn mobile-btn close-nav"><i class="mdi mdi-close"></i></a>
+            </div>
+        </div>
+
+        <div class="row narrowest nav-menu--group" data-nav-menu="resto">
+            <h6>Welcome to</h6>
+            <h1 class="resto-name"><img src="/static/app-v2/img/icons/resto-logo.png" alt="" class="resto-logo"> Restaurant Name</h1>
+            <h5 class="resto-address"><i class="mdi mdi-map-marker"></i> Restaurant Address</h5>
+
+            <hr>
+        </div>
+
+        <div class="row narrowest nav-menu--group" data-nav-menu="categories">
+            <h4>Categories</h4>
+
+            <div class="row block-1-4 block-m-1-4 block-tab-1-3 block-mob-1-3 categories-list">
+                <div class="col-block">
+                    <div class="categories-list--block">
+                        <div class="categories-list--image">
+                            <img src="/static/app-v2/img/icons/icons8-star-100.png" alt="">
+                        </div>
+
+                        <div class="categories-list--name">
+                            <h6>Special</h6>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-block">
+                    <div class="categories-list--block">
+                        <div class="categories-list--image">
+                            <img src="/static/app-v2/img/icons/icons8-rice-bowl-100.png" alt="">
+                        </div>
+
+                        <div class="categories-list--name">
+                            <h6>Rice Meals</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-block">
+                    <div class="categories-list--block">
+                        <div class="categories-list--image">
+                            <img src="/static/app-v2/img/icons/icons8-tapas-100.png" alt="">
+                        </div>
+
+                        <div class="categories-list--name">
+                            <h6>Appetizers</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-block">
+                    <div class="categories-list--block">
+                        <div class="categories-list--image">
+                            <img src="/static/app-v2/img/icons/icons8-noodles-100.png" alt="">
+                        </div>
+
+                        <div class="categories-list--name">
+                            <h6>Soup and Salads</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-block">
+                    <div class="categories-list--block">
+                        <div class="categories-list--image">
+                            <img src="/static/app-v2/img/icons/icons8-sandwich-100.png" alt="">
+                        </div>
+
+                        <div class="categories-list--name">
+                            <h6>Sandwich</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-block">
+                    <div class="categories-list--block">
+                        <div class="categories-list--image">
+                            <img src="/static/app-v2/img/icons/icons8-sandwich-100.png" alt="">
+                        </div>
+
+                        <div class="categories-list--name">
+                            <h6>Sandwich</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-block">
+                    <div class="categories-list--block">
+                        <div class="categories-list--image">
+                            <img src="/static/app-v2/img/icons/icons8-sandwich-100.png" alt="">
+                        </div>
+
+                        <div class="categories-list--name">
+                            <h6>Sandwich</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-block">
+                    <div class="categories-list--block">
+                        <div class="categories-list--image">
+                            <img src="/static/app-v2/img/icons/icons8-sandwich-100.png" alt="">
+                        </div>
+
+                        <div class="categories-list--name">
+                            <h6>Sandwich</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-block">
+                    <div class="categories-list--block">
+                        <div class="categories-list--image">
+                            <img src="/static/app-v2/img/icons/icons8-sandwich-100.png" alt="">
+                        </div>
+
+                        <div class="categories-list--name">
+                            <h6>Sandwich</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+        </div>
+
+        <div class="row narrowest nav-menu--group" data-nav-menu="promo">
+            <div class="col-full featured-promo--header">
+                <div class="col-six section--title">
+                    <h5>Featured Promos</h5>
+                </div>
+                <div class="col-six section--action">
+                    <a class="hide-section--btn"><i class="mdi mdi-chevron-down"></i></a>
+                </div>
+            </div>
+
+            <div class="col-full featured-promo--content">
+                <ul class="promo-list">
+                    <li class="promo-list--item">
+                        <div class="promo-list--block">
+                            <div class="promo-list--name">Featured Promo 01</div>
+                        </div>
+                    </li>
+                    <li class="promo-list--item">
+                        <div class="promo-list--block">
+                            <div class="promo-list--name">Featured Promo 02</div>
+                        </div>
+                    </li>
+                    <li class="promo-list--item">
+                        <div class="promo-list--block">
+                            <div class="promo-list--name">Featured Promo 03 long text here test test</div>
+                        </div>
+                    </li>
+                    <li class="promo-list--item">
+                        <div class="promo-list--block">
+                            <div class="promo-list--name">Featured Promo 04</div>
+                        </div>
+                    </li>
+                    <li class="promo-list--item">
+                        <div class="promo-list--block">
+                            <div class="promo-list--name">Featured Promo 05</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+        </div>
+        
+        <div class="row narrowest nav-menu--group" data-nav-menu="filter">
+            <h4>Filter</h4>
+
+            <div class="col-full filter-list--content">
+                <ul class="filter-list">
+                    <li class="filter-list--item">
+                        <div class="filter-list--block fitler-list--vegetable">
+                            <h4 class="filter-list--name"><img src="/static/app-v2/img/icons/vegetable.svg" alt="" class="filter-list--image"> Vegetables</h4>
+                        </div>
+                    </li>
+                    <li class="filter-list--item">
+                        <div class="filter-list--block fitler-list--spicy">
+                            <h4 class="filter-list--name"><img src="/static/app-v2/img/icons/chili.svg" alt="" class="filter-list--image"> Spicy</h4>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <hr>
+        </div>
+        
+        <div class="row narrowest nav-menu--group" data-nav-menu="other">
+            <h4>Other</h4>
+
+            <div class="col-full">
+                Other Content
+            </div>
+
+            <hr>
+        </div>
+
+        <div hidden class="row narrowest footer-nav">
+            <a class="btn btn--pill btn--small full-width"><i class="mdi mdi-swap-horizontal"></i> Switch to <span class="dining-option--name">Takeout</span></a>
+        </div>
+    </nav>
+    
+    <nav class="side-nav nav-right nav-profile">
+        <div class="row narrowest header-nav">
+            <div class="col-two header-nav--btn-left">
+                <a class="ordering-btn mobile-btn close-nav"><i class="mdi mdi-chevron-left"></i></a>
+            </div>
+            <div class="col-eight header-nav--center">
+                <h5>Profile</h5>
+            </div>
+            <div class="col-two header-nav--btn-right">
+                <a class="ordering-btn mobile-btn openExitApp"><i class="mdi mdi-exit-to-app"></i></a>
+            </div>
+        </div>
+
+        <div class="row narrowest nav-profile--group">
+            <div class="profile-details">
+                <img class="profile-image" src="/static/app-v2/img/icons/account-circle.png" alt="">
+                <h1 class="profile-name">Camille Ilan</h1>
+
+                <h4 class="profile-table-code"><span class="light-text">Table Code:</span> <span class="table-code">12345</span></h4>
+
+                <h5 class="light-text">Date logged in:
+                    <br>
+                    <span class="login-date medium-text">March 06, 2020</span>
+                    <span class="login-time medium-text">12:34pm</span>
+                </h5>
+
+                <div class="profile-details--cta">
+                    <a class="btn btn--stroke btn--pill btn--small openLogout">Logout</a>
+                </div>
+            </div>
+
+            <hr>
+        </div>
+    </nav>
+
+    <main class="main-content main-home">
+        <section class="s-promo">
+            <div class="row narrowest featured-promo--wrapper">
+                <div class="col-full featured-promo--header">
+                    <div class="col-six section--title">
+                        <h5>Featured Promos</h5>
+                    </div>
+                    <div class="col-six section--action">
+                        <a class="hide-section--btn"><i class="mdi mdi-minus-box"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row narrowest featured-promo--slide">
+                <div class="featured-promo--slide-item">
+                    <div class="featured-promo--header">
+                        <h4>Specials: Amazing Combo</h4>
+                    </div>
+
+                    <div class="featured-promo--cta">
+                        <a class="ordering-btn-normal default-btn">Discover More</a>
+                    </div>
+                </div>
+                <div class="featured-promo--slide-item">
+                    <div class="featured-promo--header">
+                        <h4>Specials: Amazing Combo</h4>
+                    </div>
+
+                    <div class="featured-promo--cta">
+                        <a class="ordering-btn-normal default-btn">Discover More</a>
+                    </div>
+                </div>
+                <div class="featured-promo--slide-item">
+                    <div class="featured-promo--header">
+                        <h4>Specials: Amazing Combo</h4>
+                    </div>
+
+                    <div class="featured-promo--cta">
+                        <a class="ordering-btn-normal default-btn">Discover More</a>
+                    </div>
+                </div>
+                <div class="featured-promo--slide-item">
+                    <div class="featured-promo--header">
+                        <h4>Specials: Amazing Combo</h4>
+                    </div>
+
+                    <div class="featured-promo--cta">
+                        <a class="ordering-btn-normal default-btn">Discover More</a>
+                    </div>
+                </div>
+                <div class="featured-promo--slide-item">
+                    <div class="featured-promo--header">
+                        <h4>Specials: Amazing Combo</h4>
+                    </div>
+
+                    <div class="featured-promo--cta">
+                        <a class="ordering-btn-normal default-btn">Discover More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section class="s-categories">
+            <div class="row narrowest categories--wrapper">
+                <div class="col-full categories--header">
+                    <div class="col-six section--title">
+                        <h5>Categories</h5>
+                    </div>
+                    <div class="col-six section--action">
+                        <a hidden class="hide-section--btn"><i class="mdi mdi-minus-box"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row narrowest categories--slide">
+                <div class="categories--slide-item">
+                    <div class="categories--icon">
+                        <img src="/static/app-v2/img/icons/icons8-star-100.png" alt="">
+                    </div>
+                    <div class="categories--text">
+                        <h6>Special</h6>
+                    </div>
+                </div>
+                <div class="categories--slide-item">
+                    <div class="categories--icon">
+                        <img src="/static/app-v2/img/icons/icons8-rice-bowl-100.png" alt="">
+                    </div>
+                    <div class="categories--text">
+                        <h6>Rice Meals</h6>
+                    </div>
+                </div>
+                <div class="categories--slide-item">
+                    <div class="categories--icon">
+                        <img src="/static/app-v2/img/icons/icons8-tapas-100.png" alt="">
+                    </div>
+                    <div class="categories--text">
+                        <h6>Appetizers</h6>
+                    </div>
+                </div>
+                <div class="categories--slide-item">
+                    <div class="categories--icon">
+                        <img src="/static/app-v2/img/icons/icons8-noodles-100.png" alt="">
+                    </div>
+                    <div class="categories--text">
+                        <h6>Soup and Salads</h6>
+                    </div>
+                </div>
+                <div class="categories--slide-item">
+                    <div class="categories--icon">
+                        <img src="/static/app-v2/img/icons/icons8-sandwich-100.png" alt="">
+                    </div>
+                    <div class="categories--text">
+                        <h6>Sandwich</h6>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section class="s-menu">
+            <div class="row narrowest menu-grid--wrapper">
+                <div class="col-full menu-grid--header">
+                    <div class="col-six section--title">
+                        <h5 class="menu-grid--category"><img src="/static/app-v2/img/icons/icons8-star-100.png" alt="" class="menu-grid--category-image"> Specials</h5>
+                    </div>
+                    <div class="col-six section--action">
+                        <a class="view-option--btn view-option--grid"><i class="mdi mdi-view-grid"></i></a>
+                        <a class="view-option--btn view-option--full active"><i class="mdi mdi-view-agenda"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row narrowest block-1-1 menu-grid-items menu-view--full">
+                <div class="col-block">
+                    <div class="menu-grid-item">
+                        <div class="menu-grid-item--image">
+                            <img src="/static/app-v2/img/menu/demo-menu-01.jpg" alt="">
+                        </div>
+                        <div class="menu-grid-item--text">
+                            <h5 class="menu-grid-item--name">Amazing Combo</h5>
+                            <p class="menu-grid-item--price">P 1,234.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-block">
+                    <div class="menu-grid-item">
+                        <div class="menu-grid-item--image">
+                            <img src="/static/app-v2/img/menu/demo-menu-02.jpg" alt="">
+                        </div>
+                        <div class="menu-grid-item--text">
+                            <h5 class="menu-grid-item--name">Amazing Combo dasd qawd cxzca ewa eweqaw eqwaxs</h5>
+                            <p class="menu-grid-item--price">P 1,234.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-block">
+                    <div class="menu-grid-item">
+                        <div class="menu-grid-item--image">
+                            <img src="/static/app-v2/img/menu/demo-menu-01.jpg" alt="">
+                        </div>
+                        <div class="menu-grid-item--text">
+                            <h5 class="menu-grid-item--name">Amazing Combo</h5>
+                            <p class="menu-grid-item--price">P 1,234.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-block">
+                    <div class="menu-grid-item">
+                        <div class="menu-grid-item--image">
+                            <img src="/static/app-v2/img/menu/demo-menu-01.jpg" alt="">
+                        </div>
+                        <div class="menu-grid-item--text">
+                            <h5 class="menu-grid-item--name">Amazing Combo</h5>
+                            <p class="menu-grid-item--price">P 1,234.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-block">
+                    <div class="menu-grid-item">
+                        <div class="menu-grid-item--image">
+                            <img src="/static/app-v2/img/menu/demo-menu-01.jpg" alt="">
+                        </div>
+                        <div class="menu-grid-item--text">
+                            <h5 class="menu-grid-item--name">Amazing Combo</h5>
+                            <p class="menu-grid-item--price">P 1,234.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main class="main-content main-filters hidden">
+        <section class="s-filters">
+            <div class="filter--wrapper">
+                <div class="row narrowest filter--header">
+                    <div class="col-full">
+                        <h2>Filters</h2>
+    
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+
+                <div class="row narrowest block-1-2 filter--boxes">
+                    <div class="col-block">
+                        <div class="filter--box filter--vegetables">
+                            <div class="filter--box-media">
+                                <img src="/static/app-v2/img/icons/vegetable.svg" alt="">
+                            </div>
+                            <div class="filter--box-text">
+                                <h5>Vegetables</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-block">
+                        <div class="filter--box filter--spicy">
+                            <div class="filter--box-media">
+                                <img src="/static/app-v2/img/icons/chili.svg" alt="">
+                            </div>
+                            <div class="filter--box-text">
+                                <h5>Spicy</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main class="main-content main-search hidden">
+        <section class="s-search">
+            <div class="search--wrapper">
+                <div class="row narrowest search--header">
+                    <div class="col-full search--input">
+                        <input class="full-width" type="text" placeholder="Search" id="mainSearch">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="s-results">
+            <div class="results-wrapper">
+                <div class="row narrowest results-header">
+                    <div class="col-six section--title">
+                        <h5>Results</h5>
+                    </div>
+                    <div class="col-six section--action">
+                        <a class="view-option--btn view-option--grid"><i class="mdi mdi-view-grid"></i></a>
+                        <a class="view-option--btn view-option--full active"><i class="mdi mdi-view-agenda"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div hidden class="empty-results--wrapper">
+                <div class="row narrowest">
+                    <div class="col-full">
+                        <div class="empty-results">
+                            <i class="mdi mdi-feature-search-outline"></i>
+                            <h3>No items available.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row narrowest block-1-1 menu-grid-items menu-view--solo">
+                <div class="col-block">
+                    <div class="menu-grid-item">
+                        <div class="menu-grid-item--image">
+                            <img src="/static/app-v2/img/menu/demo-menu-01.jpg" alt="">
+                        </div>
+                        <div class="menu-grid-item--text">
+                            <h5 class="menu-grid-item--name">Amazing Combo</h5>
+                            <p class="menu-grid-item--price">P 1,234.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-block">
+                    <div class="menu-grid-item">
+                        <div class="menu-grid-item--image">
+                            <img src="/static/app-v2/img/menu/demo-menu-01.jpg" alt="">
+                        </div>
+                        <div class="menu-grid-item--text">
+                            <h5 class="menu-grid-item--name">Amazing Combo dasd qawd cxzca ewa eweqaw eqwaxs</h5>
+                            <p class="menu-grid-item--price">P 1,234.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-block">
+                    <div class="menu-grid-item">
+                        <div class="menu-grid-item--image">
+                            <img src="/static/app-v2/img/menu/demo-menu-01.jpg" alt="">
+                        </div>
+                        <div class="menu-grid-item--text">
+                            <h5 class="menu-grid-item--name">Amazing Combo</h5>
+                            <p class="menu-grid-item--price">P 1,234.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-block">
+                    <div class="menu-grid-item">
+                        <div class="menu-grid-item--image">
+                            <img src="/static/app-v2/img/menu/demo-menu-01.jpg" alt="">
+                        </div>
+                        <div class="menu-grid-item--text">
+                            <h5 class="menu-grid-item--name">Amazing Combo</h5>
+                            <p class="menu-grid-item--price">P 1,234.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-block">
+                    <div class="menu-grid-item">
+                        <div class="menu-grid-item--image">
+                            <img src="/static/app-v2/img/menu/demo-menu-01.jpg" alt="">
+                        </div>
+                        <div class="menu-grid-item--text">
+                            <h5 class="menu-grid-item--name">Amazing Combo</h5>
+                            <p class="menu-grid-item--price">P 1,234.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main class="main-content main-cart hidden">
+        <section class="s-cart">
+            <div class="row narrowest cart--header">
+                <div class="col-full">
+                    <h3>Your Placed Orders <span class="item-cart--count">3</span></h3>
+                </div>
+            </div>
+
+            <div hidden class="row narrowest empty-card--wrapper">
+                <div class="col-full">
+                    <div class="empty-cart">
+                        <i class="mdi mdi-shopping-outline"></i>
+                        <h3>Your cart is currently empty.</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row narrowest cart-items">
+                <div class="col-full cart-item--block with-modifier test-remove">
+                    <div class="col-full cart-item">
+                        <div class="col-four cart-item--image">
+                            <img src="/static/app-v2/img/menu/demo-menu-02.jpg" alt="">
+                        </div>
+                        <div class="col-eight cart-item--text">
+                            <h5 class="cart-item--name">Cajun Chicken Cheddar Sandwich</h5>
+                            <p class="cart-item--price">P 12,345.00 <span class="cart-item--quantity-count">(x2)</span></p>
+                        </div>
+
+                        <div class="cart-item--delete">
+                            <a class="delete-section--btn"><i class="mdi mdi-trash-can-outline"></i></a>
+                        </div>
+
+                        <div class="cart-item--quantity">
+                            <div class="menu-item--quantity">
+                                <i class="quantity-decrease">&minus;</i>
+                                <input type="text" value="1" readonly>
+                                <i class="quantity-increase">&plus;</i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-full cart-item--modifier">
+                        <div class="col-full cart-item--modifier-content">
+                            <div class="col-seven">
+                                <i class="mdi mdi-subdirectory-arrow-right"></i>
+                                <span class="cart-item--modifier-name">Modifier 01</span>
+                            </div>
+                            <div class="col-five text-right">
+                                <span class="cart-item--modifier-price">P 1,234.00 <span class="cart-item--quantity-count">(x2)</span>
+                            </div>
+                        </div>
+                        <div class="col-full cart-item--modifier-content">
+                            <div class="col-seven">
+                                <i class="mdi mdi-subdirectory-arrow-right"></i>
+                                <span class="cart-item--modifier-name">Modifier 02</span>
+                            </div>
+                            <div class="col-five text-right">
+                                <span class="cart-item--modifier-price">P 1,234.00 <span class="cart-item--quantity-count">(x2)</span>
+                            </div>
+                        </div>
+                        <div class="col-full cart-item--modifier-content">
+                            <div class="col-seven">
+                                <i class="mdi mdi-subdirectory-arrow-right"></i>
+                                <span class="cart-item--modifier-name">Modifier 03</span>
+                            </div>
+                            <div class="col-five text-right">
+                                <span class="cart-item--modifier-price">P 1,234.00 <span class="cart-item--quantity-count">(x2)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-full cart-item--block">
+                    <div class="col-full cart-item">
+                        <div class="col-four cart-item--image">
+                            <img src="/static/app-v2/img/menu/demo-menu-02.jpg" alt="">
+                        </div>
+                        <div class="col-eight cart-item--text">
+                            <h5 class="cart-item--name">Cajun Chicken Cheddar Sandwich</h5>
+                            <p class="cart-item--price">P 12,345.00 <span class="cart-item--quantity-count">[x1]</span></p>
+                        </div>
+
+                        <div class="cart-item--delete">
+                            <a class="delete-section--btn"><i class="mdi mdi-trash-can-outline"></i></a>
+                        </div>
+
+                        <div class="cart-item--quantity">
+                            <div class="menu-item--quantity">
+                                <i class="quantity-decrease">&minus;</i>
+                                <input type="text" value="1" readonly>
+                                <i class="quantity-increase">&plus;</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row narrowest cart-receipts">
+                <div class="col-full cart-receipt--wrapper">
+                    <div class="col-full cart-receipt--group">
+                        <div class="col-six cart-receipt--text">
+                            <h5>Subtotal</h5>
+                        </div>
+                        <div class="col-six cart-receipt--amount cart-receipt--subtotal">
+                            <h5>P 1,2345.00</h5>
+                        </div>
+                    </div>
+                    <div class="col-full cart-receipt--group">
+                        <div class="col-six cart-receipt--text">
+                            <h5>VAT Total</h5>
+                        </div>
+                        <div class="col-six cart-receipt--amount cart-receipt--vattotal">
+                            <h5>P 1,2345.00</h5>
+                        </div>
+                    </div>
+                    <div class="col-full cart-receipt--group">
+                        <div class="col-six cart-receipt--text">
+                            <h5>Outstanding Balance</h5>
+                        </div>
+                        <div class="col-six cart-receipt--amount cart-receipt--balance">
+                            <h5>P 1,2345.00</h5>
+                        </div>
+                    </div>
+                    <div class="col-full cart-receipt--group">
+                        <div class="col-eight cart-receipt--text">
+                            <h5>Item Count</h5>
+                        </div>
+                        <div class="col-four cart-receipt--amount cart-receipt--count">
+                            <h5>3</h5>
+                        </div>
+                    </div>
+                    <div class="col-full cart-receipt--group">
+                        <div class="col-six cart-receipt--text">
+                            <h4>Total</h4>
+                        </div>
+                        <div class="col-six cart-receipt--amount cart-receipt--total">
+                            <h4>P 12,345.00</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="menuItemModal" class="modal modal-bottom">
+        <div class="modal-content">
+            <div class="modal-wrapper">
+                <header class="header header-top">
+                    <div class="row narrowest header-nav">
+                        <div class="col-two header-nav--btn-left">
+                            <a class="ordering-btn mobile-btn close-modal"><i class="mdi mdi-chevron-left"></i></a>
+                        </div>
+                        <div class="col-eight header-nav--center">
+                            &nbsp;
+                        </div>
+                        <div class="col-two header-nav--btn-right">
+                            &nbsp;
+                        </div>
+                    </div>
+                </header>
+
+                <section class="s-menuitem">
+                    <div class="row narrowest menu-item--img-wrapper">
+                        <img src="/static/app-v2/img/menu/demo-menu-02.jpg" alt="" class="menu-item--img">
+                    </div>
+    
+                    <div class="row narrowest menu-item--details">
+                        <div class="col-full">
+                            <div class="menu-item--name">
+                                <h3>Amazing Combo (Good for 6 persons)</h3>
+                            </div>
+                        </div>
+    
+                        <div class="col-six">
+                            <div class="menu-item--price">
+                                <h4>P 1,234.00</h4>
+                            </div>
+                        </div>
+    
+                        <div class="col-six">
+                            <div class="menu-item--quantity">
+                                <i class="quantity-decrease">&minus;</i>
+                                <input type="text" value="1" readonly>
+                                <i class="quantity-increase">&plus;</i>
+                            </div>
+                        </div>
+    
+                        <div class="col-full">
+                            <div class="menu-item--description">
+                                <div class="menu-item--description-header">
+                                    <h5>Description</h5>
+                                </div>
+                                <div class="menu-item--description-text">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto placeat tenetur voluptas vel doloribus voluptatem, distinctio porro repudiandae doloremque vitae esse excepturi sapiente commodi inventore vero officia, eos, nostrum ipsum aperiam? Fugit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+                <div class="cta-wrapper cta-bottom">
+                    <div class="row narrowest">
+                        <div class="col-three cta--secondary">
+                            <a class="btn btn--pill full-width"><i class="mdi mdi-heart"></i></a>
+                        </div>
+                        <div class="col-nine cta--primary">
+                            <a class="btn btn--primary btn--pill full-width openMenuItemModifier">Add To Cart <i class="mdi mdi-shopping"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="menuItemModifierModal" class="modal modal-bottom">
+        <div class="modal-content">
+            <div class="modal-wrapper">
+                <div class="selected-menuitem">
+                    <div class="row narrowest selected-menuitem--header">
+                        <div class="col-ten">
+                            <h5>You are currently ordering:</h5>
+                        </div>
+                        <div class="col-two text-right">
+                            <a class="collapse-section--btn"><i class="mdi mdi-arrow-collapse-up"></i></a>
+                        </div>
+                    </div>
+    
+                    <div class="row narrowest cart-items">
+                        <div class="col-full cart-item">
+                            <div class="col-four cart-item--image">
+                                <img src="/static/app-v2/img/menu/demo-menu-02.jpg" alt="">
+                            </div>
+                            <div class="col-eight cart-item--text">
+                                <h5 class="cart-item--name">Burger ala Varde</h5>
+                                <p class="cart-item--price">P 1,234.00</p>
+                            </div>
+    
+                            <div class="cart-item--delete">
+                                <a class="delete-section--btn"><i class="mdi mdi-trash-can-outline"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modifier-item--quantity">
+                    <div class="row narrowest">
+                        <div class="menu-item--quantity">
+                            <i class="quantity-decrease">&minus;</i>
+                            <input type="text" value="1" readonly>
+                            <i class="quantity-increase">&plus;</i>
+                        </div>
+                    </div>
+                </div>
+    
+                <header class="header header-top">
+                    <div class="row narrowest header-nav">
+                        <div class="col-two header-nav--btn-left">
+                            <a class="ordering-btn mobile-btn close-modal"><i class="mdi mdi-chevron-left"></i></a>
+                        </div>
+                        <div class="col-eight header-nav--center">
+                            <h5>Addons &amp; Special Requests</h5>
+                        </div>
+                        <div class="col-two header-nav--btn-right">
+                            <a class="ordering-btn mobile-btn selected-menuitem--open">
+                                <i class="mdi mdi-shopping"></i>
+                            </a>
+                            <span class="item-cart--count">1</span>
+                        </div>
+                    </div>
+                </header>
+    
+                <section class="s-modifier">
+                    <div class="modifier-group" data-modifier="suggested">
+                        <div class="row narrowest modifier-group--header">
+                            <div class="col-ten section--title">
+                                <h5><span class="modifier-group--name">Suggested Items</span></h5>
+                            </div>
+                            <div class="col-two section--action">
+                                <a class="hide-section--btn"><i class="mdi mdi-minus-box"></i></a>
+                            </div>
+                        </div>
+    
+                        <div class="row narrowest modifier-group--items">
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="/static/app-v2/img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 01 long name text here test test</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="/static/app-v2/img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 02</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="/static/app-v2/img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 03</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="/static/app-v2/img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 04</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="/static/app-v2/img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 05</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="modifier-group" data-modifier="addons-01">
+                        <div class="row narrowest modifier-group--header">
+                            <div class="col-ten section--title">
+                                <h5>(Optional) Select from <span class="modifier-group--name">[Addons 01]</span></h5>
+                            </div>
+                            <div class="col-two section--action">
+                                <a class="hide-section--btn"><i class="mdi mdi-minus-box"></i></a>
+                            </div>
+                        </div>
+    
+                        <div class="row narrowest modifier-group--items">
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 01 long name text here test test</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 02</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 03</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 04</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 05</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modifier-group" data-modifier="addons-02">
+                        <div class="row narrowest modifier-group--header">
+                            <div class="col-ten section--title">
+                                <h5>(Optional) Select from <span class="modifier-group--name">[Addons 02]</span></h5>
+                            </div>
+                            <div class="col-two section--action">
+                                <a class="hide-section--btn"><i class="mdi mdi-minus-box"></i></a>
+                            </div>
+                        </div>
+    
+                        <div class="row narrowest modifier-group--items">
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 01 long name text here test test</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 02</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 03</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 04</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                            <div class="modifier-group--item">
+                                <div class="modifer-group--item-image">
+                                    <img src="img/menu/demo-menu-01.jpg" alt="">
+                                </div>
+                                <div class="modifier-group--item-text">
+                                    <h5 class="modifier-group--item-name">Modifier 05</h5>
+                                    <p class="modifier-group--item-price">P 1,234.00</p>
+                                </div>
+                                <div class="modifier-checked">
+                                    <i class="mdi mdi-sticker-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="special-request">
+                        <div class="row narrowest special-request--header">
+                            <div class="col-ten section--title">
+                                <h5>Any Special Request/s?</h5>
+                            </div>
+                            <div class="col-two section--action">
+                                <a hidden class="hide-section--btn"><i class="mdi mdi-minus-box"></i></a>
+                            </div>
+                        </div>
+    
+                        <div class="row narrowest special-request--wrapper">
+                            <div class="col-full">
+                                <div class="special-request--text">
+                                    <textarea class="full-width" placeholder="Type your Special Request/s here..." id="specialRequest"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+                <div class="cta-wrapper cta-bottom">
+                    <div class="row narrowest">
+                        <div class="col-full cta--primary">
+                            <a class="btn btn--primary btn--pill full-width openItemCart">Proceed <i class="mdi mdi-check"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="itemCartModal" class="modal modal-bottom">
+        <div class="modal-content">
+            <div class="modal-wrapper">
+                <header class="header header-top">
+                    <div class="row narrowest header-nav">
+                        <div class="col-two header-nav--btn-left">
+                            <a class="ordering-btn mobile-btn close-modal"><i class="mdi mdi-chevron-left"></i></a>
+                        </div>
+                        <div class="col-eight header-nav--center">
+                            <h5>Item Cart <span class="item-cart--count">3</span></h5>
+                        </div>
+                        <div class="col-two header-nav--btn-right">
+    
+                        </div>
+                    </div>
+                </header>
+    
+                <section class="s-itemcart">
+                    <div hidden class="row narrowest empty-cart--wrapper">
+                        <div class="col-full">
+                            <div class="empty-cart">
+                                <i class="mdi mdi-shopping-outline"></i>
+                                <h3>Your cart is currently empty.</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row narrowest cart-items">
+                        <div class="col-full cart-item--block with-modifier test-remove">
+                            <div class="col-full cart-item">
+                                <div class="col-four cart-item--image">
+                                    <img src="/static/app-v2/img/menu/demo-menu-02.jpg" alt="">
+                                </div>
+                                <div class="col-eight cart-item--text">
+                                    <h5 class="cart-item--name">Cajun Chicken Cheddar Sandwich</h5>
+                                    <p class="cart-item--price">P 12,345.00 <span class="cart-item--quantity-count">(x2)</span></p>
+                                </div>
+        
+                                <div class="cart-item--delete">
+                                    <a class="delete-section--btn"><i class="mdi mdi-trash-can-outline"></i></a>
+                                </div>
+    
+                                <div class="cart-item--quantity">
+                                    <div class="menu-item--quantity">
+                                        <i class="quantity-decrease">&minus;</i>
+                                        <input type="text" value="1" readonly>
+                                        <i class="quantity-increase">&plus;</i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-full cart-item--modifier">
+                                <div class="col-full cart-item--modifier-content">
+                                    <div class="col-seven">
+                                        <i class="mdi mdi-subdirectory-arrow-right"></i>
+                                        <span class="cart-item--modifier-name">Modifier 01</span>
+                                    </div>
+                                    <div class="col-five text-right">
+                                        <span class="cart-item--modifier-price">P 1,234.00 <span class="cart-item--quantity-count">(x2)</span>
+                                    </div>
+                                </div>
+                                <div class="col-full cart-item--modifier-content">
+                                    <div class="col-seven">
+                                        <i class="mdi mdi-subdirectory-arrow-right"></i>
+                                        <span class="cart-item--modifier-name">Modifier 02</span>
+                                    </div>
+                                    <div class="col-five text-right">
+                                        <span class="cart-item--modifier-price">P 1,234.00 <span class="cart-item--quantity-count">(x2)</span>
+                                    </div>
+                                </div>
+                                <div class="col-full cart-item--modifier-content">
+                                    <div class="col-seven">
+                                        <i class="mdi mdi-subdirectory-arrow-right"></i>
+                                        <span class="cart-item--modifier-name">Modifier 03</span>
+                                    </div>
+                                    <div class="col-five text-right">
+                                        <span class="cart-item--modifier-price">P 1,234.00 <span class="cart-item--quantity-count">(x2)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-full cart-item--block">
+                            <div class="col-full cart-item">
+                                <div class="col-four cart-item--image">
+                                    <img src="/static/app-v2/img/menu/demo-menu-02.jpg" alt="">
+                                </div>
+                                <div class="col-eight cart-item--text">
+                                    <h5 class="cart-item--name">Cajun Chicken Cheddar Sandwich</h5>
+                                    <p class="cart-item--price">P 12,345.00 <span class="cart-item--quantity-count">[x1]</span></p>
+                                </div>
+        
+                                <div class="cart-item--delete">
+                                    <a class="delete-section--btn"><i class="mdi mdi-trash-can-outline"></i></a>
+                                </div>
+    
+                                <div class="cart-item--quantity">
+                                    <div class="menu-item--quantity">
+                                        <i class="quantity-decrease">&minus;</i>
+                                        <input type="text" value="1" readonly>
+                                        <i class="quantity-increase">&plus;</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row narrowest cart-receipts">
+                        <div class="col-full cart-receipt--wrapper">
+                            <div class="col-full cart-receipt--group">
+                                <div class="col-six cart-receipt--text">
+                                    <h5>Subtotal</h5>
+                                </div>
+                                <div class="col-six cart-receipt--amount cart-receipt--subtotal">
+                                    <h5>P 1,2345.00</h5>
+                                </div>
+                            </div>
+                            <div class="col-full cart-receipt--group">
+                                <div class="col-six cart-receipt--text">
+                                    <h5>VAT Total</h5>
+                                </div>
+                                <div class="col-six cart-receipt--amount cart-receipt--vattotal">
+                                    <h5>P 1,2345.00</h5>
+                                </div>
+                            </div>
+                            <div class="col-full cart-receipt--group">
+                                <div class="col-six cart-receipt--text">
+                                    <h5>Outstanding Balance</h5>
+                                </div>
+                                <div class="col-six cart-receipt--amount cart-receipt--balance">
+                                    <h5>P 1,2345.00</h5>
+                                </div>
+                            </div>
+                            <div class="col-full cart-receipt--group">
+                                <div class="col-eight cart-receipt--text">
+                                    <h5>Item Count</h5>
+                                </div>
+                                <div class="col-four cart-receipt--amount cart-receipt--count">
+                                    <h5>3</h5>
+                                </div>
+                            </div>
+                            <div class="col-full cart-receipt--group">
+                                <div class="col-six cart-receipt--text">
+                                    <h4>Total</h4>
+                                </div>
+                                <div class="col-six cart-receipt--amount cart-receipt--total">
+                                    <h4>P 12,345.00</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+                <div class="cta-wrapper cta-bottom">
+                    <div class="row narrowest">
+                        <div class="col-three cta--secondary">
+                            <a class="btn btn--pill full-width"><i class="mdi mdi-plus-circle"></i></a>
+                        </div>
+                        <div class="col-nine cta--primary">
+                            <a class="btn btn--primary btn--pill full-width openReviewOrder">Place order(s) <i class="mdi mdi-check-all"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="removeCartItemModal" class="modal modal-top modal-small">
+        <div class="modal-content">
+            <div class="modal-wrapper">
+                <div class="row narrowest">
+                    <div class="col-full remove-item--wrapper">
+                        <h4>Remove this item?</h4>
+
+                        <div class="remove-item--cta">
+                            <a class="ordering-btn primary-btn rounded-btn block-btn removeItemBtn">Remove <i class="mdi mdi-trash-can-outline"></i></a>
+                            <a class="ordering-btn secondary-btn rounded-btn block-btn close-modal">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="reviewOrderModal" class="modal modal-top modal-small">
+        <div class="modal-content">
+            <div class="modal-wrapper">
+                <div class="row narrowest">
+                    <div class="col-full review-order--wrapper">
+                        <h1><i class="mdi mdi-information-outline"></i></h1>
+                        <h3>Please review your order.</h3>
+                        <p>Once confirmed, your order can't be changed nor refunded. Would you like to place your order(s) now?</p>
+    
+                        <div class="review-order--cta">
+                            <a class="ordering-btn primary-btn rounded-btn block-btn openPaymentMethod">Confirm <i class="mdi mdi-check-all"></i></a>
+                            <a class="ordering-btn secondary-btn rounded-btn block-btn close-modal">Review Order <i class="mdi mdi-eye-outline"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="paymentMethodModal" class="modal modal-top">
+        <div class="modal-content">
+            <div class="modal-wrapper">
+                <header class="header header-top">
+                    <div class="row narrowest header-nav">
+                        <div class="col-two header-nav--btn-left">
+                            <a class="ordering-btn mobile-btn close-modal"><i class="mdi mdi-chevron-left"></i></a>
+                        </div>
+                        <div class="col-eight header-nav--center">
+                            <h5>Payment Method</h5>
+                        </div>
+                        <div class="col-two header-nav--btn-right">
+
+                        </div>
+                    </div>
+                </header>
+
+                <section class="s-payment">
+                    <div class="row narrowest">
+                        <div class="col-full">
+                            <div class="payment-method--wrapper">
+                                <div class="payment-method--header">
+                                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                                </div>
+
+                                <div class="row block-1-2 payment-method--boxes">
+                                    <div class="col-block">
+                                        <div class="payment-method--box payment-method--cash">
+                                            <div class="payment-method--box-media">
+                                                <img src="/static/app-v2/img/icons/cash.svg" alt="">
+                                            </div>
+                                            <div class="payment-method--box-text">
+                                                <h5>Cash</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-block">
+                                        <div class="payment-method--box payment-method--paypal">
+                                            <div class="payment-method--box-media">
+                                                <img src="/static/app-v2/img/icons/paypal.svg" alt="">
+                                            </div>
+                                            <div class="payment-method--box-text">
+                                                <h5>Paypal</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div id="paymentThanksModal" class="modal modal-top modal-small">
+        <div class="modal-content">
+            <div class="modal-wrapper">
+                <div class="row narrowest">
+                    <div class="col-full">
+                        <div class="payment-thanks--wrapper">
+                            <h1><i class="mdi mdi-checkbox-marked-circle-outline"></i></h1>
+                            <!-- <img src="img/illustrations/undraw_confirmed_81ex.svg" alt="" class="payment-thanks--image"> -->
+                            <h3>Order Confirmed</h3>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam veritatis officia, sed quaerat eius iste.</p>
+
+                            <div class="payment-thanks--cta">
+                                <a class="ordering-btn primary-btn rounded-btn block-btn close-modal--all">Add More Items <i class="mdi mdi-plus-circle"></i></a>
+                                <a class="ordering-btn secondary-btn rounded-btn block-btn openExitApp">Exit App <i class="mdi mdi-exit-to-app"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="logoutModal" class="modal modal-left modal-small">
+        <div class="modal-content">
+            <div class="modal-wrapper">
+                <div class="row narrowest">
+                    <div class="col-full">
+                        <div class="logout--wrapper">
+                            <h1><i class="mdi mdi-information-outline"></i></h1>
+                            <h3>Are you sure you want to logout?</h3>
+
+                            <div class="review-order--cta">
+                            <a href="customer.html" class="ordering-btn primary-btn rounded-btn block-btn logoutButton">Logout</a>
+                            <a class="ordering-btn secondary-btn rounded-btn block-btn close-modal">Cancel</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="exitAppModal" class="modal modal-right modal-small">
+        <div class="modal-content">
+            <div class="modal-wrapper">
+                <div class="row narrowest">
+                    <div class="col-full">
+                        <div class="exit-app--wrapper">
+                            <h1><i class="mdi mdi-information-outline"></i></h1>
+                            <h3>Exit App?</h3>
+
+                            <div class="review-order--cta">
+                                <a href="./" class="ordering-btn primary-btn rounded-btn block-btn exitAppButton">Exit <i class="mdi mdi-exit-to-app"></i></a>
+                                <a class="ordering-btn secondary-btn rounded-btn block-btn close-modal">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="languageModal" class="modal modal-top modal-small">
+        <div class="modal-content">
+            <div class="modal-wrapper">
+                <div class="row narrowest">
+                    <div class="col-full">
+                        <div class="languange-list--header">
+                            <h3>Select Language</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row narrowest block-1-2 block-m-1-2 language-list--wrapper">
+                    <div class="col-block">
+                        <div class="language-list--item">
+                            <div class="language-list--item-media">
+                                <img src="/static/app-v2/img/icons/united-states.svg" alt="">
+                            </div>
+                            <div class="language-list--item-text">
+                                <h5>English</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-block">
+                        <div class="language-list--item">
+                            <div class="language-list--item-media">
+                                <img src="/static/app-v2/img/icons/philippines.svg" alt="">
+                            </div>
+                            <div class="language-list--item-text">
+                                <h5>Filipino</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-block">
+                        <div class="language-list--item">
+                            <div class="language-list--item-media">
+                                <img src="/static/app-v2/img/icons/japan.svg" alt="">
+                            </div>
+                            <div class="language-list--item-text">
+                                <h5>日本語</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-block">
+                        <div class="language-list--item">
+                            <div class="language-list--item-media">
+                                <img src="/static/app-v2/img/icons/china.svg" alt="">
+                            </div>
+                            <div class="language-list--item-text">
+                                <h5>マンダリン</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-block">
+                        <div class="language-list--item">
+                            <div class="language-list--item-media">
+                                <img src="/static/app-v2/img/icons/turkey.svg" alt="">
+                            </div>
+                            <div class="language-list--item-text">
+                                <h5>Türk</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-block">
+                        <div class="language-list--item">
+                            <div class="language-list--item-media">
+                                <img src="/static/app-v2/img/icons/thailand.svg" alt="">
+                            </div>
+                            <div class="language-list--item-text">
+                                <h5>ไทย</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="ordering-btn mobile-btn close-modal"><i class="mdi mdi-close"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app-v2/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/app-v2/js/plugins.js"></script>
+    <script src="/static/app-v2/js/main.js"></script>
+    <script src="/static/app-v2/js/item.js"></script>
+
+    <script>
+        /* Interface
+        * ------------------------------------------------------ */
+        
+        /* Main Nav Tabs
+        * ------------------------------------------------------ */
+        $('.main-nav--wrapper .main-nav--item').unbind().click(function() {
+            $('.main-nav--wrapper .main-nav--item').removeClass('active');
+            $(this).addClass('active');
+            $('.main-content').addClass('hidden');
+            $('.main-content.' + $(this).attr('data-nav')).removeClass('hidden');
+        });
+
+
+        /* Side Nav
+        * ------------------------------------------------------ */
+        // Side Nav Left
+        $('.openSideNavMenu').click(function() {
+            $('.side-nav.nav-left').css("width", "100%");
+            $('body').addClass('side-nav-open');
+        });
+        $('.close-nav').click(function() {
+            $('.side-nav.nav-left').css("width", "0");
+            $('body').removeClass('side-nav-open');
+        });
+
+        // Side Nav Right
+        $('.openSideNavProfile').click(function() {
+            $('.side-nav.nav-right').css("width", "100%");
+            $('body').addClass('side-nav-open');
+        });
+        $('.close-nav').click(function() {
+            $('.side-nav.nav-right').css("width", "0");
+            $('body').removeClass('side-nav-open');
+        });
+
+
+        /* Sticky Header: Categories, Search
+        * ------------------------------------------------------ */
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 100){  
+                $('.s-categories, .s-search').addClass("sticky");
+            }
+            else{
+                $('.s-categories, .s-search').removeClass("sticky");
+            }
+        });
+
+
+        /* Menu View Option (Full or Grid)
+        * ------------------------------------------------------ */
+        $('.view-option--full').click(function() {
+            $('.menu-grid-items').removeClass('block-1-2');
+            $('.menu-grid-items').addClass('block-1-1');
+            $('.menu-grid-items').removeClass('menu-view--grid');
+            $('.menu-grid-items').addClass('menu-view--full');
+            $('.view-option--grid').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('.view-option--grid').click(function() {
+            $('.menu-grid-items').removeClass('block-1-1');
+            $('.menu-grid-items').addClass('block-1-2');
+            $('.menu-grid-items').removeClass('menu-view--full');
+            $('.menu-grid-items').addClass('menu-view--grid');
+            $('.view-option--full').removeClass('active');
+            $(this).addClass('active');
+        });
+
+
+        /* Hide Section Buttons
+        * ------------------------------------------------------ */
+        // Promo
+        $('.s-promo .hide-section--btn').click(function() {
+            $('.featured-promo--slide').slideToggle("fast");
+            $('.s-promo .hide-section--btn i').toggleClass("mdi-minus-box mdi-plus-box");
+        });
+        $('.nav-menu .featured-promo--header').click(function() {
+            $('.featured-promo--content').slideToggle("fast");
+            $('.nav-menu .featured-promo--header i').toggleClass("mdi-chevron-down mdi-chevron-right");
+        });
+        
+
+        // Categories
+        $('.s-categories .hide-section--btn').click(function() {
+            $('.categories--slide').slideToggle("fast");
+            $('.s-categories .hide-section--btn i').toggleClass("mdi-minus-box mdi-plus-box");
+        });
+
+        // Modifiers
+        $('.s-modifier').on('click', '.modifier-group--header', function(e) {
+            console.log("hide");
+            e.preventDefault();
+            $(this).find('.hide-section--btn i').toggleClass("mdi-minus-box mdi-plus-box");
+            $(this).next('.modifier-group--items').slideToggle("fast");
+        });
+
+        /* Modals
+        * ------------------------------------------------------ */
+        // Menu Item Modal
+        $('.menu-grid-item').unbind().click(function() {
+            $('body').addClass('modal-open');
+            $('#menuItemModal').fadeIn();
+        });
+        $('#menuItemModal .close-modal').unbind().click(function() {
+            $('body').removeClass('modal-open');
+            $('#menuItemModal').fadeOut();
+        });
+        
+        // Menu Item Modifiier Modal
+        $('.openMenuItemModifier').click(function() {
+            $('#menuItemModifierModal').fadeIn();
+        })
+        $('#menuItemModifierModal .close-modal').click(function() {
+            $('#menuItemModifierModal').fadeOut();
+        });
+        
+        // Item Cart Modal
+        $('.openItemCart').click(function() {
+            $('#itemCartModal').fadeIn();
+        })
+        $('#itemCartModal .close-modal').click(function() {
+            $('#itemCartModal').fadeOut();
+        });
+        
+        // Remove Cart Item Modal
+        $('.delete-section--btn').click(function() {
+            $('#removeCartItemModal').fadeIn();
+        })
+        $('#removeCartItemModal .close-modal').click(function() {
+            $('#removeCartItemModal').fadeOut();
+        });
+
+        // Review Order Modal
+        $('.openReviewOrder').click(function() {
+            $('#reviewOrderModal').fadeIn();
+        })
+        $('#reviewOrderModal .close-modal').click(function() {
+            $('#reviewOrderModal').fadeOut();
+        });
+        
+        // Payment Method Modal
+        $('.openPaymentMethod').click(function() {
+            $('#reviewOrderModal').fadeOut();
+            $('#paymentMethodModal').fadeIn();
+        })
+        $('#paymentMethodModal .close-modal').click(function() {
+            $('#paymentMethodModal').fadeOut();
+        });
+        
+        // Payment Thanks Modal
+        $('.payment-method--cash').click(function() {
+            $('#paymentThanksModal').fadeIn();
+        })
+        $('#paymentThanksModal .close-modal').click(function() {
+            $('#paymentThanksModal').fadeOut();
+        });
+
+        // Exit App Modal
+        $('.openLogout').click(function() {
+            $('#logoutModal').fadeIn();
+        });
+        $('#logoutModal .close-modal').click(function() {
+            $('#logoutModal').fadeOut();
+        });
+        
+        // Exit App Modal
+        $('.openExitApp').click(function() {
+            $('#exitAppModal').fadeIn();
+        });
+        $('#exitAppModal .close-modal').click(function() {
+            $('#exitAppModal').fadeOut();
+        });
+        
+        // Language Modal
+        $('.openLanguage').click(function() {
+            $('#languageModal').fadeIn();
+        });
+        $('#languageModal .close-modal').click(function() {
+            $('#languageModal').fadeOut();
+        });
+        
+        // Close All
+        $('.close-modal--all').click(function() {
+            $('body').removeClass('modal-open');
+            $('.modal').fadeOut();
+        });
+
+
+        /* Selected Menu Item
+        * ------------------------------------------------------ */
+        $('.selected-menuitem--open').click(function() {
+            $('.selected-menuitem').fadeToggle();
+        });
+        $('.collapse-section--btn').click(function() {
+            $('.selected-menuitem').fadeOut();
+        });
+
+
+        /* Modifier Selection
+        * ------------------------------------------------------ */
+        $('.modifier-group--item').unbind().click(function(){
+            $('.modifier-group--item').removeClass('active');
+            $(this).addClass('active');
+            // $('.modifier-item--quantity').fadeIn();
+        });
+
+
+        /* Quantity Counter
+        * ------------------------------------------------------ */
+        $('.menu-item--quantity i').click(function() {
+            val = parseInt($('.menu-item--quantity input').val());
+
+            if ($(this).hasClass('quantity-decrease')) {
+                val = val - 1;
+            } else if ($(this).hasClass('quantity-increase')) {
+                val = val + 1;
+            }
+
+            if (val < 1) {
+                val = 1;
+            }
+
+            $('.menu-item--quantity input').val(val);
+        });
+
+        
+        /* Remove Cart Item - Test
+        * ------------------------------------------------------ */
+        $('.removeItemBtn').click(function() {
+            $('#removeCartItemModal').fadeOut();
+            $('.test-remove').fadeOut();
+        });
+
+    </script>
+</body>
+
+</html>

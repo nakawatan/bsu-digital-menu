@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="IntegrityNet">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>Digital Menu</title>
+    <link rel="shortcut icon" href="/static/app-v2/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/app-v2/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/static/app-v2/css/base.css">
+    <link rel="stylesheet" href="/static/app-v2/css/vendor.css">
+    <link rel="stylesheet" href="/static/app-v2/css/main.css">
+
+    <script src="/static/app-v2/js/modernizr.js"></script>
+    <script src="/static/app-v2/js/pace.min.js"></script>
+
+</head>
+<body class="zapp-customer">
+    <header class="header header-top">
+        <div class="row narrowest header-nav">
+            <div class="col-four header-nav--btn-left">
+                <a class="ordering-btn mobile-btn previousButton"><i class="mdi mdi-arrow-left"></i></a>
+            </div>
+            <div class="col-four header-nav--center">
+                <img hidden src="/static/app-v2/img/icons/resto-logo.png" alt="Resto Logo" class="resto-logo">
+            </div>
+            <div class="col-four header-nav--btn-right">
+                <a class="ordering-btn mobile-btn openLanguage"><i class="mdi mdi-web"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="s-customer">
+        <div class="row narrowest">
+            <div class="col-full">
+                <div class="customer-preferences--wrapper">
+                    <label for="customerName">{{Tf "app/ui" .Language "Welcome"}}</label>
+                    <small hidden>{{Tf "app/ui" .Language "Please input your name."}}</small>
+                    <input class="full-width" type="text" placeholder="Name" id="customerName">
+                    
+                    <div class="customer-preferences--promo">
+                        <a class="openPromoSubscription">{{Tf "app/ui" .Language "Interested in our promos?"}} <i class="mdi mdi-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cta-wrapper cta-bottom">
+        <div class="row narrowest">
+            <div class="customer-preferences--cta cta-login">
+                <a href="dining-option.html" class="btn btn--primary btn--pill full-width">{{Tf "app/ui" .Language "Login"}}</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="languageModal" class="modal modal-top modal-small">
+        <div class="modal-content">
+            <div class="modal-wrapper">
+                <div class="row narrowest">
+                    <div class="col-full">
+                        <div class="languange-list--header">
+                            <h3>{{Tf "app/ui" .Language "Select Language"}}</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row narrowest block-1-2 block-m-1-2 language-list--wrapper">
+                    <div class="col-block">
+                        <div class="language-list--item">
+                            <div class="language-list--item-media">
+                                <img src="/static/app-v2/img/icons/united-states.svg" alt="">
+                            </div>
+                            <div class="language-list--item-text">
+                                <h5>English</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-block">
+                        <div class="language-list--item">
+                            <div class="language-list--item-media">
+                                <img src="/static/app-v2/img/icons/philippines.svg" alt="">
+                            </div>
+                            <div class="language-list--item-text">
+                                <h5>Filipino</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-block">
+                        <div class="language-list--item">
+                            <div class="language-list--item-media">
+                                <img src="/static/app-v2/img/icons/japan.svg" alt="">
+                            </div>
+                            <div class="language-list--item-text">
+                                <h5>日本語</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-block">
+                        <div class="language-list--item">
+                            <div class="language-list--item-media">
+                                <img src="/static/app-v2/img/icons/china.svg" alt="">
+                            </div>
+                            <div class="language-list--item-text">
+                                <h5>マンダリン</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-block">
+                        <div class="language-list--item">
+                            <div class="language-list--item-media">
+                                <img src="/static/app-v2/img/icons/turkey.svg" alt="">
+                            </div>
+                            <div class="language-list--item-text">
+                                <h5>Türk</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-block">
+                        <div class="language-list--item">
+                            <div class="language-list--item-media">
+                                <img src="/static/app-v2/img/icons/thailand.svg" alt="">
+                            </div>
+                            <div class="language-list--item-text">
+                                <h5>ไทย</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="ordering-btn mobile-btn close-modal"><i class="mdi mdi-close"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="promoSubscriptionModal" class="modal modal-right modal-small">
+        <div class="modal-content">
+            <div class="modal-wrapper">
+                <div class="row narrowest">
+                    <div class="col-full">
+                        <div class="customer-promo--header">
+                            <h3>{{Tf "app/ui" .Language "Connect with Us"}}</h3>
+                            <p>{{Tf "app/ui" .Language "Subscribe for our promotions."}}</p>
+
+                            <!-- Thanks for your interest in Connect Homes! We look forward to hearing from you about your project or question. Please complete the inquiry form below and we will get back to you as soon as possible. -->
+                        </div>
+
+                        <div class="customer-promo--wrapper">
+                            <label for="customerEmail">{{Tf "app/ui" .Language "Email:"}} </label>
+                            <input class="full-width" type="email" placeholder="Email address" id="customerEmail">
+
+                            <label for="customerMobile">{{Tf "app/ui" .Language "Mobile Number:"}} <small><mark>{{Tf "app/ui" .Language "Optional"}}</mark></small> </label>
+                            <input class="full-width" type="tel" placeholder="Mobile number" id="customerMobile">
+                        </div>
+
+                        <div class="customer-promo--cta">
+                            <a class="ordering-btn primary-btn rounded-btn block-btn promoSubscsriptButton">{{Tf "app/ui" .Language "Subscribe"}}</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <a class="ordering-btn mobile-btn close-modal"><i class="mdi mdi-close"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app-v2/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/app-v2/js/plugins.js"></script>
+    <script src="/static/app-v2/js/main.js"></script>
+
+    <script>
+        // Language Modal
+        $('.openLanguage').click(function() {
+            $('#languageModal').fadeIn();
+        });
+        $('#languageModal .close-modal').click(function() {
+            $('#languageModal').fadeOut();
+        });
+        
+        // Promo Modal
+        $('.openPromoSubscription').click(function() {
+            $('#promoSubscriptionModal').fadeIn();
+        });
+        $('#promoSubscriptionModal .close-modal').click(function() {
+            $('#promoSubscriptionModal').fadeOut();
+        });
+    </script>
+</body>
+</html>

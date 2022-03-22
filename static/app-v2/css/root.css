@@ -1,0 +1,44 @@
+:root {
+    --font-main: "Gilroy", sans-serif;
+    --font-sans: "Basier Circle", sans-serif;
+    --font-mono: "GT Pressura Mono", monospace;
+    --font-serif: serif;
+    --font-cursive: cursive;
+
+    --primary-main: #EC191E;
+    --primary-main-light: #EB5659;
+
+    --primary-dark: #101316;
+    --primary-grey-dark: #333333;
+    --primary-grey: #999999;
+    --primary-grey-light: #F2F2F2;
+    --primary-grey-lighter: #F3F3F3;
+    --primary-grey-lightest: #FAFAFA;
+    --primary-light: #FFFFFF;
+
+    --primary-white-smoke: #FDF0F0;
+    --primary-floral-white: #FAF7F2;
+    --primary-whisper: #F5EAEA;
+    --primary-sauvignon: #EFE8E3;
+    --primary-pattens-blue: #E7EDF0;
+    --primary-hawkes-blue: #D9DFEB;
+    --primary-eclipse: #3A3636;
+
+    --shadow-main: 0px 5px 15px -5px rgba(236, 25, 30, .75);
+    --shadow-main-light: 0px 5px 15px -5px rgba(240, 81, 81, .75);
+    --shadow-dark: 0px 5px 15px -5px rgba(16, 19, 22, .75);
+    --shadow-grey-dark: 0px 5px 15px -5px rgba(51, 51, 51, .75);
+    --shadow-grey: 0px 5px 15px -5px rgba(153, 153, 153, .75);
+    --shadow-grey-light: 0px 5px 15px -5px rgba(242, 242, 242, .75);
+    --shadow-light: 0px 5px 15px -5px rgba(255, 255, 255, 0.75);
+
+    --mobile-s-width: 320px;
+    --mobile-m-width: 375px;
+    --mobile-l-width: 425px;
+    --tablet-width: 768px;
+    --laptop-width: 1024px;
+    --laptop-m-width: 1200px;
+    --laptop-l-width: 1440px;
+    --desktop-width: 1680px;
+    --four-k-width: 2560px;
+}
