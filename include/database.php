@@ -1,7 +1,7 @@
 <?php 
     class DB {
         public $db;
-        private $servername = "sql113.epizy.com";
+        private $servername = "us-cdbr-east-05.cleardb.net";
         private $username = "b931a904312f70";
         private $password = "ac3d5b91";
         private $dbname = "heroku_b05c455b652dfe1";
