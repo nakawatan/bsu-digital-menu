@@ -2,9 +2,9 @@
     class DB {
         public $db;
         private $servername = "sql113.epizy.com";
-        private $username = "qIosIaayb5S";
-        private $password = "HbOI6FP9QdcN36B";
-        private $dbname = "epiz_31342682_digital_menu";
+        private $username = "b931a904312f70";
+        private $password = "ac3d5b91";
+        private $dbname = "heroku_b05c455b652dfe1";
 
         // private $servername = "localhost";
         // private $username = "u488180748_UBSU0gc";
