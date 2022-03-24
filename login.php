@@ -25,7 +25,7 @@
 <html lang="en">
     <head>
         <?php include'links.php'; ?>
-        <meta name="google-signin-client_id" content="180607259648-knu2mj80ku44bum6336jd71ub3u692dn.apps.googleusercontent.com">
+        <meta name="google-signin-client_id" content="197088859614-am8cktn3cvp47k5qm5os0sp0bulani9s.apps.googleusercontent.com">
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <style>
             .logo-margin-negative{

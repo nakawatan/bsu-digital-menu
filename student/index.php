@@ -3,11 +3,22 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+
+    if (isset($_SESSION["user"])){
+        if (!$_SESSION["user"]["user_level_id"] == "3"){
+            unset($_SESSION);
+            header('Location: '.'/login.php');
+        }
+    }else {
+        header('Location: '.'/login.php');
+    }
+
     $root = dirname(__FILE__, 2);
     include $root.'/classes/restaurant.php';
     $obj = new Restaurant();
     $obj->get_active_only = true;
     $obj_list = $obj->get_records();
+    
 ?>
 <html lang="en">
 <head>

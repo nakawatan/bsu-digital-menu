@@ -7,6 +7,15 @@
 
     $obj->restaurant_id = $_REQUEST['restaurant_id'];
     $obj_list = $obj->get_records();
+
+    if (isset($_SESSION["user"])){
+        if (!$_SESSION["user"]["user_level_id"] == "3"){
+            unset($_SESSION);
+            header('Location: '.'/login.php');
+        }
+    }else {
+        header('Location: '.'/login.php');
+    }
 ?>
 
 <html lang="en">
