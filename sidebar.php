@@ -59,10 +59,12 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Tables
                 </a> -->
+                <?php if ($_SESSION["user"]["user_level_id"] == "2"){ ?>
                 <a class="nav-link" href="monitoring.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Monitoring
                 </a>
+                <?php } ?>
                 <a class="nav-link" href="categories.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Categories
@@ -75,16 +77,24 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Orders
                 </a>
+
+                <?php if ($_SESSION["user"]["user_level_id"] == "2"){ ?>
+                <a class="nav-link" href="store_wallet.php">
+                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    Wallet
+                </a>
+                <?php } ?>
+                
+                <?php if ($_SESSION["user"]["user_level_id"] == "1"){ ?>
+                <a class="nav-link" href="wallet.php">
+                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    Wallet
+                </a>
+                <?php } ?>
                 <?php if ($_SESSION["user"]["user_level_id"] == "1"){ ?>
                 <a class="nav-link" href="merchants.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Merchants
-                </a>
-                <?php } ?>
-                <?php if ($_SESSION["user"]["user_level_id"] == "1"){ ?>
-                <a class="nav-link" href="voucher_series.php">
-                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                    Voucher Series
                 </a>
                 <?php } ?>
 

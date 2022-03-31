@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+    include_once "validator.php";
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }

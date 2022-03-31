@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <?php
-
+    include_once "validator.php";
+    if(!isset($_SESSION)){
+        session_start();
+    }
 ?>
 <html lang="en">
     <head>

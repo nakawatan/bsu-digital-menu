@@ -75,6 +75,7 @@
                         $newArr["google_id"] = $row['google_id'];
                         $newArr["image"] = $row['image'];
                         $newArr["restaurant_id"] = $row['restaurant_id'];
+                        print($row['restaurant_id']);
                     }
                 // close the result.
                 // mysqli_free_result($result);
@@ -90,6 +91,47 @@
 
             $stmt = $db->prepare($sql);
             $stmt->bind_param('s', $this->username);
+
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+            $db->close();
+            // return $result;
+            if ($result)
+            {
+                // it return number of rows in the table.
+                if ($result->num_rows > 0)
+                    {
+                        $row = $result->fetch_assoc();
+                        $this->id = $row['id'];
+                        $this->username = $row['username'];
+                        $this->firstname = $row['firstname'];
+                        $this->lastname = $row['lastname'];
+                        $this->password = $row['password'];
+                        $this->email = $row['email'];
+                        $this->user_level_id = $row['user_level_id'];
+                        $this->created_at = $row['created_at'];
+                        $this->google_id = $row['google_id'];
+                        $this->image = $row['image'];
+                    }
+                // close the result.
+                // mysqli_free_result($result);
+            }
+        }
+
+        function get_user_by_restaurant_id () {
+            $db = new DB();
+            $db->connect();
+
+            $sql = "select * from users where deleted_at is null and restaurant_id = ?;";
+
+            $stmt = $db->prepare($sql);
+            $id = $this->restaurant_id;
+
+            // reset id
+            $this->id=0;
+
+            $stmt->bind_param('i', $id);
 
             $stmt->execute();
 

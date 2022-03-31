@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+    include_once "validator.php";
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
@@ -39,6 +40,7 @@
                                         <tr>
                                             <th>Logo</th>
                                             <th>Name</th>
+                                            <th>QR</th>
                                             <th>Active</th>
                                             <th>Action</th>
                                         </tr>
@@ -47,6 +49,7 @@
                                         <tr>
                                             <th>Logo</th>
                                             <th>Name</th>
+                                            <th>QR</th>
                                             <th>Active</th>
                                             <th>Action</th>
                                         </tr>
@@ -63,6 +66,7 @@
                                             <tr data-attr-details='${data}'>
                                                 <td><img width='75px' src='${row['logo']}'></img></td>
                                                 <td>${row['name']}</td>
+                                                <td><img width='75px' src='${row['qr_code_link']}'></img></td>
                                                 <td>${active}</td>
                                                 <td>
                                                     <button class='btn btn-primary' onclick='OpenEditModal(this);'><i class='fas fa-edit'></i></button>

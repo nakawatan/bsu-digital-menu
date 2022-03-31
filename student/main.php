@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 
 <?php 
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     $root = dirname(__FILE__, 2);
     include $root.'/classes/category.php';
+    include $root.'/classes/restaurant.php';
     $obj = new Category();
+    $restaurant = new Restaurant();
+    $restaurant->id = $_REQUEST['restaurant_id'];
+    $restaurant->get_record();
 
     $obj->restaurant_id = $_REQUEST['restaurant_id'];
     $obj_list = $obj->get_records();
@@ -61,7 +68,7 @@
             user-select: none;
             padding: 0.375rem 0.75rem;
             font-size: 1rem;
-            border-radius: 0.25rem;
+            border-radius: 0.25rem;s
             transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
 
@@ -99,7 +106,7 @@
     </header>
 
     <nav class="main-nav nav-bottom">
-        <div class="row narrowest block-1-3 main-nav--wrapper">
+        <div class="row narrowest block-1-2 main-nav--wrapper">
             <div class="col-block">
                 <div class="main-nav--item active" data-nav="main-home">
                     <div class="main-nav--icon">
@@ -107,13 +114,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-block">
+            <!-- <div class="col-block">
                 <div class="main-nav--item" data-nav="main-search">
                     <div class="main-nav--icon">
                         <i class="mdi mdi-magnify"></i>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col-block">
                 <div class="main-nav--item" data-nav="main-cart">
                     <div class="main-nav--icon">
@@ -128,9 +135,6 @@
 
     <nav class="side-nav nav-left nav-menu">
         <div class="row narrowest header-nav">
-            <div class="col-two header-nav--btn-left">
-                <a class="ordering-btn mobile-btn openLanguage"><i class="mdi mdi-web"></i></a>
-            </div>
             <div class="col-eight header-nav--center">
                 <h5>Menu</h5>
             </div>
@@ -141,8 +145,8 @@
 
         <div class="row narrowest nav-menu--group" data-nav-menu="resto">
             <h6>Welcome to</h6>
-            <h1 class="resto-name"><img src="/static/app-v2/img/icons/resto-logo.png" alt="" class="resto-logo"> Restaurant Name</h1>
-            <h5 class="resto-address"><i class="mdi mdi-map-marker"></i> Restaurant Address</h5>
+            <h1 class="resto-name"><img src="/static/app-v2/img/icons/resto-logo.png" alt="" class="resto-logo"> <?php echo $restaurant->name; ?></h1>
+            
 
             <hr>
         </div>
@@ -151,8 +155,9 @@
             <h4>Categories</h4>
             <div class="row block-1-4 block-m-1-4 block-tab-1-3 block-mob-1-3 categories-list">
             <?php foreach($obj_list as $row){ 
+            $data = json_encode($row);
              echo "
-                <div class='col-block'>
+                <div data-attr-details='${data}' class='col-block category-item-side'>
                     <div class='categories-list--block'>
                         <div class='categories-list--image'>
                             <img src='${row['image']}' alt=''>
@@ -192,15 +197,9 @@
         <div class="row narrowest nav-profile--group">
             <div class="profile-details">
                 <img class="profile-image" src="/static/app-v2/img/icons/account-circle.png" alt="">
-                <h1 class="profile-name">Camille Ilan</h1>
+                <h1 class="profile-name"><?php echo $_SESSION['user']['firstname'] . " " . $_SESSION['user']['lastname'] ?></h1>
 
-                <h4 class="profile-table-code"><span class="light-text">Table Code:</span> <span class="table-code">12345</span></h4>
-
-                <h5 class="light-text">Date logged in:
-                    <br>
-                    <span class="login-date medium-text">March 06, 2020</span>
-                    <span class="login-time medium-text">12:34pm</span>
-                </h5>
+                <h4 class="profile-table-code"><span class="light-text">Balance:</span> <span class="table-code">100.00</span></h4>
 
                 <div class="profile-details--cta">
                     <a class="btn btn--stroke btn--pill btn--small openLogout">Logout</a>
@@ -629,7 +628,7 @@
                             <h3>Are you sure you want to logout?</h3>
 
                             <div class="review-order--cta">
-                            <a href="customer.html" class="ordering-btn primary-btn rounded-btn block-btn logoutButton">Logout</a>
+                            <a href="/logout.php" class="ordering-btn primary-btn rounded-btn block-btn logoutButton">Logout</a>
                             <a class="ordering-btn secondary-btn rounded-btn block-btn close-modal">Cancel</a>
                         </div>
                         </div>
@@ -746,6 +745,8 @@
     <script src="/assets/js/html5-qrcode.min.js"></script>
 
     <script>
+        var user_id = "<?php echo $_SESSION['user']['id']; ?>";
+        var user_balance = 0;
         function docReady(fn) {
             // see if DOM is already available
             if (document.readyState === "complete"
@@ -758,6 +759,8 @@
             }
         }
         var restaurant_id = "<?php echo $_REQUEST['restaurant_id']; ?>";
+        var dining_option = "<?php echo $_REQUEST['dining_option']; ?>";
+        var user_id = "<?php echo $_SESSION['user']['id']; ?>";
         /* Interface
         * ------------------------------------------------------ */
         
@@ -785,8 +788,21 @@
 
         // Side Nav Right
         $('.openSideNavProfile').click(function() {
-            $('.side-nav.nav-right').css("width", "100%");
-            $('body').addClass('side-nav-open');
+            $.ajax({
+                url: '/api/',
+                data : {
+                    "method":"get_wallet_balance",
+                    "id":user_id
+
+                },
+                method: 'POST',
+                dataType:"json",
+                success: function(response) {
+                    $(".table-code").text(response.balance);
+                    $('.side-nav.nav-right').css("width", "100%");
+                    $('body').addClass('side-nav-open');
+                }
+            });
         });
         $('.close-nav').click(function() {
             $('.side-nav.nav-right').css("width", "0");
@@ -899,43 +915,61 @@
         
         // Payment Method Modal
         $('.openPaymentMethod').click(function() {
-            // PlaceOrder();
-            $('#scan-voucher-modal').fadeIn();
+            var total = calculateTotal();
+            $.ajax({
+                url: '/api/',
+                data : {
+                    "method":"get_wallet_balance",
+                    "id":user_id
 
-            docReady(function () {
-                var resultContainer = document.getElementById('qr-reader-results');
-                var lastResult, countResults = 0;
-                function onScanSuccess(decodedText, decodedResult) {
-                    if (decodedText !== lastResult) {
-                        ++countResults;
-                        lastResult = decodedText;
-                        // Handle on success condition with the decoded message.
-                        console.log(`Scan result ${decodedText}`, decodedResult);
-                        
-                        $.ajax({
-                            url: '/api/',
-                            data: {
-                                method:"validate_voucher",
-                                id:decodedText,
-                                amount:calculateTotal()
-                            },
-                            method: 'POST',
-                            dataType:"json",
-                            success: function(response) {
-                                if (response.status=="ok") {
-                                    PlaceOrder(response.voucher.id);
-                                }else {
-                                    alert(response.msg);
-                                }
-                            }
-                        });
+                },
+                method: 'POST',
+                dataType:"json",
+                success: function(response) {
+                    user_balance = response.balance;
+                    if (user_balance < total) {
+                        alert("Insufficient balance!");
+                    }else {
+                        PlaceOrder(0);
                     }
                 }
-
-                var html5QrcodeScanner = new Html5QrcodeScanner(
-                    "qr-reader", { fps: 10, qrbox: 250 });
-                html5QrcodeScanner.render(onScanSuccess);
             });
+            // $('#scan-voucher-modal').fadeIn();
+
+            // docReady(function () {
+            //     var resultContainer = document.getElementById('qr-reader-results');
+            //     var lastResult, countResults = 0;
+            //     function onScanSuccess(decodedText, decodedResult) {
+            //         if (decodedText !== lastResult) {
+            //             ++countResults;
+            //             lastResult = decodedText;
+            //             // Handle on success condition with the decoded message.
+            //             console.log(`Scan result ${decodedText}`, decodedResult);
+                        
+            //             $.ajax({
+            //                 url: '/api/',
+            //                 data: {
+            //                     method:"validate_voucher",
+            //                     id:decodedText,
+            //                     amount:calculateTotal()
+            //                 },
+            //                 method: 'POST',
+            //                 dataType:"json",
+            //                 success: function(response) {
+            //                     if (response.status=="ok") {
+            //                         PlaceOrder(response.voucher.id);
+            //                     }else {
+            //                         alert(response.msg);
+            //                     }
+            //                 }
+            //             });
+            //         }
+            //     }
+
+            //     var html5QrcodeScanner = new Html5QrcodeScanner(
+            //         "qr-reader", { fps: 10, qrbox: 250 });
+            //     html5QrcodeScanner.render(onScanSuccess);
+            // });
 
 
             $('#reviewOrderModal').fadeOut();
@@ -1028,8 +1062,13 @@
             $('.test-remove').fadeOut();
         });
 
+        //
         // category click
-        $('.category-item').on('click',function() {
+        $('.category-item,.category-item-side').on('click',function() {
+            if ($(this).hasClass("category-item-side")){
+                $('.side-nav.nav-left').css("width", "0");
+                $('body').removeClass('side-nav-open');
+            }
             data = JSON.parse($(this).attr('data-attr-details'));
             $('.menu-grid--category').text(data.name);
             $('.category-item').removeClass('active-category');
@@ -1198,8 +1237,9 @@
                     method:"create_order",
                     restaurant_id:restaurant_id,
                     voucher_id : voucher_id,
-                    user_id : 1,
+                    user_id : user_id,
                     total:  total,
+                    dine_in:dining_option,
                     order_items: order_items,
                 },
                 method: 'POST',

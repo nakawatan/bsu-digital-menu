@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+    include_once "validator.php";
     include 'classes/menuitem.php';
     include 'classes/category.php';
     $obj = new MenuItem();
@@ -50,6 +51,7 @@
                                             <th>Name</th>
                                             <th>Description</th>
                                             <th>Category</th>
+                                            <th>Price</th>
                                             <th>Active</th>
                                             <th>Action</th>
                                         </tr>
@@ -60,6 +62,7 @@
                                             <th>Name</th>
                                             <th>Description</th>
                                             <th>Category</th>
+                                            <th>Price</th>
                                             <th>Active</th>
                                             <th>Action</th>
                                         </tr>
@@ -78,6 +81,7 @@
                                                 <td>${row['name']}</td>
                                                 <td>${row['description']}</td>
                                                 <td>${row['category_name']}</td>
+                                                <td>${row['price']}</td>
                                                 <td>${active}</td>
                                                 <td>
                                                     <button class='btn btn-primary' onclick='OpenEditModal(this);'><i class='fas fa-edit'></i></button>
@@ -155,6 +159,10 @@
                                 }
                             ?>
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price-input" class="form-label">Price:</label>
+                        <input class="form-control" type="number" id="price-input">
                     </div>
                     <div class="mb-3">
                         <label for="active-input" class="form-label">Active:</label>
@@ -260,6 +268,7 @@
                 data = JSON.parse($(elem).parent().parent("tr").attr("data-attr-details"));
                 
                 $('#name-input').val(data.name);
+                $('#price-input').val(data.price);
                 $('#description-input').val(data.description);
                 $('#category-input').val(data.category_id);
                 $('#active-input').bootstrapToggle((data.active == "1" ? "on" : "off"));
@@ -274,6 +283,7 @@
                         }
                         formData.append("method","update_menuitem");
                         formData.append("name",$('#name-input').val());
+                        formData.append("price",$('#price-input').val());
                         formData.append("description",$('#description-input').val());
                         formData.append("category_id",$('#category-input').val());
                         formData.append("active",($('#active-input').is(":checked") ? "1" : "0"));
@@ -314,6 +324,7 @@
                         }
                         formData.append("method","new_menuitem");
                         formData.append("name",$('#name-input').val());
+                        formData.append("price",$('#price-input').val());
                         formData.append("description",$('#description-input').val());
                         formData.append("category_id",$('#category-input').val());
                         formData.append("active",($('#active-input').is(":checked") ? "1" : "0"));

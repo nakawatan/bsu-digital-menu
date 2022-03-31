@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+    include_once "validator.php";
     include 'classes/category.php';
     $obj = new Category();
     

@@ -4,6 +4,10 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    
     if (isset($_SESSION["user"])){
         if (!$_SESSION["user"]["user_level_id"] == "3"){
             unset($_SESSION);
@@ -22,6 +26,32 @@
 ?>
 <html lang="en">
 <head>
+    <style>
+        #qr-reader button {
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #198754;
+            border-color: #198754;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        #qr-reader {
+            border-radius: 12px;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -68,20 +98,8 @@
         </div>
 
         <div class="row narrowest block-1-2 block-m-1-2 dining-option--boxes">
-            <?php foreach($obj_list as $row) { ?>
-                <div class="col-block" style="margin-bottom: 10px;">
-                <a href="main.php?restaurant_id=<?php echo $row['id']?>">
-                    <div class="dining-option--box dining-option--dinein">
-                        <div class="dining-option--box-media">
-                            <img src="<?php echo $row['logo']; ?>" style="height:100px" alt="">
-                        </div>
-                        <div class="dining-option--box-text">
-                            <h5><?php echo $row['name']; ?></h5>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <?php } ?>
+            <div id="qr-reader"></div>
+            <div id="qr-reader-results"></div>
         </div>
     </section>
 
@@ -167,8 +185,55 @@
     <script src="/static/app-v2/js/jquery-3.2.1.min.js"></script>
     <script src="/static/app-v2/js/plugins.js"></script>
     <script src="/static/app-v2/js/main.js"></script>
+    <script src="/assets/js/html5-qrcode.min.js"></script>
 
     <script>
+        function docReady(fn) {
+            // see if DOM is already available
+            if (document.readyState === "complete"
+                || document.readyState === "interactive") {
+                // call on next available tick
+                setTimeout(fn, 1);
+            } else {
+                $('#qr-reader').find('button')
+                document.addEventListener("DOMContentLoaded", fn);
+            }
+        }
+
+        docReady(function () {
+                var resultContainer = document.getElementById('qr-reader-results');
+                var lastResult, countResults = 0;
+                function onScanSuccess(decodedText, decodedResult) {
+                    if (decodedText !== lastResult) {
+                        ++countResults;
+                        lastResult = decodedText;
+                        // Handle on success condition with the decoded message.
+                        console.log(`Scan result ${decodedText}`, decodedResult);
+                        
+                        $.ajax({
+                            url: '/api/',
+                            data: {
+                                method:"get_restaurant_by_qr",
+                                id:decodedText
+                            },
+                            method: 'POST',
+                            dataType:"json",
+                            success: function(response) {
+                                if (response.status != "err") {
+                                    window.location.href="dining-option.php?restaurant_id=" + response.data.id;
+                                }else {
+                                    $("#qr-reader-results").text(response.msg);
+                                }
+                            }
+                        });
+                    }
+                }
+
+                var html5QrcodeScanner = new Html5QrcodeScanner(
+                    "qr-reader", { fps: 10, qrbox: 250 });
+                html5QrcodeScanner.render(onScanSuccess);
+            });
+
         // Language Modal
         $('.openLanguage').click(function() {
             $('#languageModal').fadeIn();

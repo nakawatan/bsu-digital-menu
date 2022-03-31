@@ -9,6 +9,7 @@
 
         public $id;
         public $name;
+        public $price;
         public $description;
         public $category_id;
         public $active;
@@ -103,6 +104,7 @@
                         $this->active = $row['active'];
                         $this->restaurant_id = $row['restaurant_id'];
                         $this->image = $row['image'];
+                        $this->price = $row['price'];
                     }
                 // close the result.
                 // mysqli_free_result($result);
@@ -123,6 +125,7 @@
                     active,
                     restaurant_id,
                     image,
+                    price,
                     created_at
                 )
             values
@@ -133,11 +136,12 @@
                     ?,
                     ?,
                     ?,
+                    ?,
                     now()
                 )
             ;";
             $stmt = $db->db->prepare($sql);
-            $stmt->bind_param('ssiiis', $this->name,$this->description,$this->category_id,$this->active,$this->restaurant_id,$this->image);
+            $stmt->bind_param('ssiiisi', $this->name,$this->description,$this->category_id,$this->active,$this->restaurant_id,$this->image,$this->price);
 
             $stmt->execute();
 
@@ -157,11 +161,12 @@
                 description=?,
                 category_id=?,
                 active=?,
-                image=?
+                image=?,
+                price=?
             where id = ?
             ;";
             $stmt = $db->prepare($sql);
-            $stmt->bind_param('ssiisi', $this->name,$this->description,$this->category_id,$this->active,$this->image,$this->id);
+            $stmt->bind_param('ssiisii', $this->name,$this->description,$this->category_id,$this->active,$this->image,$this->price,$this->id);
 
             $stmt->execute();
 

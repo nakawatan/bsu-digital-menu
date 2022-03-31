@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+    include_once "validator.php";
     include 'classes/orders.php';
     $obj = new Order();
 

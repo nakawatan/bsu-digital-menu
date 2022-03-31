@@ -13,6 +13,7 @@
     include_once $root.'/classes/orders.php';
     include_once $root.'/classes/order_items.php';
     include_once $root.'/classes/voucher_series.php';
+    include_once $root.'/classes/wallet.php';
     $result["status"] = "ok";
 
     if (isset($_REQUEST['method'])){
@@ -130,6 +131,67 @@
                     $result["msg"] ="Username is required";
                 }
                 break;
+            case "register_merchant":
+                $user = new User();
+    
+                if (isset($_REQUEST["username"])) {
+                    $user->username = $_REQUEST["username"];
+                    $user->checkUsername();
+        
+                    if ($user->id == 0){
+                        // create a restaurant first
+                        $restaurant = new Restaurant();
+                
+                        $restaurant->UploadFile();
+            
+                        if (isset($_REQUEST["store_name"])) {
+                            $restaurant->name = $_REQUEST["store_name"];
+                        }
+
+                        if (isset($_REQUEST["active"])) {
+                            $restaurant->active = 1;
+                        }
+                        
+                        $restaurant->Save();
+                        
+
+
+                        if (isset($_REQUEST["firstname"])) {
+                            $user->firstname = $_REQUEST["firstname"];
+                        }
+                        if (isset($_REQUEST["lastname"])) {
+                            $user->lastname = $_REQUEST["lastname"];
+                        }
+                        if (isset($_REQUEST["email"])) {
+                            $user->username = $_REQUEST["email"];
+                        }
+                        if (isset($_REQUEST["password"])) {
+                            $user->password = $_REQUEST["password"];
+                        }
+                        if (isset($_REQUEST["email"])) {
+                            $user->email = $_REQUEST["email"];
+                        }
+                        if (isset($_REQUEST["user_level_id"])) {
+                            $user->user_level_id = 2;
+                        }
+                        if (isset($_REQUEST["restaurant_id"])) {
+                            $user->restaurant_id = $restaurant->id;
+                        }
+                
+                        $user->Save();
+                
+                        $result["status"] = "ok";
+                        $result["obj"]=$user;
+                    }else {
+                        $result["status"]="error";
+                        $result["msg"] ="Username already exist";
+                    }
+                    
+                }else {
+                    $result["status"]="error";
+                    $result["msg"] ="Username is required";
+                }
+                break;
             case "student_login":
                 $user = new User();
                 $arr = array();
@@ -156,7 +218,7 @@
                         }
                         
                         // hard code user level for student
-                        $user->user_level_id = 2;
+                        $user->user_level_id = 3;
                 
                         if (isset($_REQUEST["google_id"])) {
                             $user->google_id = $_REQUEST["google_id"];
@@ -167,17 +229,19 @@
                         }
                 
                         $user->Save();
-                        $user->checkUsername();
-                
-                        $result["status"] = "ok";
-                        $result["obj"]=$user;
-                        $arr["id"] = $user->id;
-                        $arr["username"] = $user->username;
-                        $arr["email"] = $user->email;
-                        $arr["user_level_id"] = $user->user_level_id;
-                        $arr["google_id"] = $user->google_id;
-                        $arr["image"] = $user->image;
                     }
+                    $user->checkUsername();
+                
+                    $result["status"] = "ok";
+                    $result["obj"]=$user;
+                    $arr["id"] = $user->id;
+                    $arr["username"] = $user->username;
+                    $arr["firstname"] = $user->firstname;
+                    $arr["lastname"] = $user->lastname;
+                    $arr["email"] = $user->email;
+                    $arr["user_level_id"] = $user->user_level_id;
+                    $arr["google_id"] = $user->google_id;
+                    $arr["image"] = $user->image;
                     
                 }else {
                     $result["status"]="error";
@@ -209,6 +273,34 @@
                 }
                 break;
             // merchant API
+            case "get_restaurant_by_qr":
+                if (isset($_REQUEST['id'])){
+                    $tmp = base64_decode($_REQUEST['id']);
+                    $tmpParts = explode("DIGITALMENU::",$tmp);
+                    $id = 0;
+                    if (count($tmpParts) > 1) {
+                        
+                        $obj = new Restaurant();
+                        $obj->id = $tmpParts[1];
+                        $obj->get_record();
+                        
+                        if ($obj->id > 0) {
+                            $result['data'] = $obj;
+                        }else {
+                            $result["status"]="err";
+                            $result["msg"]="Invalid QR code";
+                        }
+                    }else {
+                        $result["status"]="err";
+                        $result["msg"]="Invalid QR code";
+                    }
+                    
+                }else {
+                    $result["status"]="err";
+                    $result["msg"]="ID must be set";
+                }
+                
+                break;
             case "update_merchant":
                 $obj = new Restaurant();
                 if (isset($_REQUEST["id"])) {
@@ -262,7 +354,7 @@
                     $obj = new Restaurant();
                     $obj->id = $_REQUEST["id"];
                     // check if user exist
-                    $obj->get_research();
+                    $obj->get_record();
                     
                     if ($obj->id >0){
                         $obj->delete();
@@ -271,6 +363,20 @@
                         $result["msg"]="Record Does not exist";
                     }
                     
+                
+                }else {
+                    $result["status"]="err";
+                    $result["msg"]="ID must be set";
+                }
+                break;
+
+            case "get_merchant_qr":
+                if (isset($_REQUEST["id"])){
+                    $obj = new Restaurant();
+                    $obj->id = $_REQUEST["id"];
+                    // check if user exist
+                    $obj->get_record();
+                    $result['qr'] = $obj->qr_code_link;
                 
                 }else {
                     $result["status"]="err";
@@ -394,6 +500,10 @@
                         if (isset($_REQUEST["restaurant_id"])) {
                             $obj->restaurant_id = $_REQUEST["restaurant_id"];
                         }
+
+                        if (isset($_REQUEST["price"])) {
+                            $obj->price = $_REQUEST["price"];
+                        }
                 
                         $obj->Update();
                 
@@ -434,6 +544,10 @@
                 if (isset($_REQUEST["restaurant_id"])) {
                     $obj->restaurant_id = $_REQUEST["restaurant_id"];
                 }
+
+                if (isset($_REQUEST["price"])) {
+                    $obj->price = $_REQUEST["price"];
+                }
                 
                 $obj->Save();
                 break;
@@ -462,6 +576,10 @@
             // order api
             case "create_order":
                 $order = new Order();
+                $wallet = new Wallet();
+
+                
+
                 if (isset($_REQUEST["restaurant_id"])){
                     $order->restaurant_id = $_REQUEST['restaurant_id'];
                 }else {
@@ -476,6 +594,7 @@
 
                 if (isset($_REQUEST["user_id"])){
                     $order->user_id = $_REQUEST['user_id'];
+                    $wallet->user_id = $_REQUEST['user_id'];
                 }
 
                 if (isset($_REQUEST["total"])){
@@ -486,17 +605,39 @@
                     $order->dine_in = $_REQUEST['dine_in'];
                 }
 
-                $order->Save();
+                $balance = $wallet->GetBalance();
 
-                if (isset($_REQUEST['order_items'])){
-                    foreach($_REQUEST['order_items'] as $row){
-                        $orderItem = new OrderItem();
-                        $orderItem->order_id = $order->id;
-                        $orderItem->menu_item_id = $row['menu_item_id'];
-                        $orderItem->price = $row['price'];
-                        $orderItem->quantity = $row['quantity'];
-                        $orderItem->Save();
+                if ($balance >= $order->total){
+                    $order->Save();
+                    if (isset($_REQUEST['order_items'])){
+                        foreach($_REQUEST['order_items'] as $row){
+                            $orderItem = new OrderItem();
+                            $orderItem->order_id = $order->id;
+                            $orderItem->menu_item_id = $row['menu_item_id'];
+                            $orderItem->price = $row['price'];
+                            $orderItem->quantity = $row['quantity'];
+                            $orderItem->Save();
+                        }
                     }
+                    $wallet->transaction_type = 2;
+                    $wallet->status=2;
+                    $wallet->amount = $order->total;
+                    $wallet->Save();
+
+
+                    $userObj = new User();
+                    $userObj->restaurant_id = $order->restaurant_id;
+                    $userObj->get_user_by_restaurant_id();
+
+                    $merchantWallet = new Wallet();
+                    $merchantWallet->user_id = $userObj->id;
+                    $merchantWallet->transaction_type = 1;
+                    $merchantWallet->status=2;
+                    $merchantWallet->amount = $order->total;
+                    $merchantWallet->Save();
+                }else {
+                    $result['status'] = "err";
+                    $result['msg']="Not Enough Balance";
                 }
 
                 break;
@@ -659,6 +800,59 @@
                     }
                     break;
 
+                //Wallet API
+                case "new_wallet_transaction":
+                    $obj = new Wallet();
+                    if (isset($_REQUEST["user_id"])){
+                        $obj->user_id = $_REQUEST["user_id"];                    
+                    }
+                    if (isset($_REQUEST["transaction_type"])){
+                        $obj->transaction_type = $_REQUEST["transaction_type"];                    
+                    }
+                    if (isset($_REQUEST["status"])){
+                        $obj->status = $_REQUEST["status"];                    
+                    }
+                    if (isset($_REQUEST["amount"])){
+                        $obj->amount = $_REQUEST["amount"];                    
+                    }
+                    $obj->Save();
+                    break;
+                case "update_wallet_transaction":
+                    $obj = new Wallet();
+                    if (isset($_REQUEST["id"])){
+                        $obj->id = $_REQUEST["id"];
+                        if (isset($_REQUEST["status"])){
+                            $obj->status = $_REQUEST["status"];
+                        }
+
+                        $obj->Update();
+                    }else {
+                        $result["status"]="err";
+                        $result["msg"]="ID must be set";
+                    }
+                    break;
+                case "delete_wallet_transaction":
+                        $obj = new Wallet();
+                        if (isset($_REQUEST["id"])){
+                            $obj->id = $_REQUEST["id"];
+
+                            $obj->Delete();
+                        }else {
+                            $result["status"]="err";
+                            $result["msg"]="ID must be set";
+                        }
+                        break;
+                case "get_wallet_balance":
+                        $obj = new Wallet();
+                        if (isset($_REQUEST["id"])){
+                            $obj->user_id = $_REQUEST["id"];
+
+                            $result['balance'] = $obj->GetBalance();
+                        }else {
+                            $result["status"]="err";
+                            $result["msg"]="ID must be set";
+                        }
+                        break;
             default:
                 $result["status"]="error";
                 $result["msg"]="Invalid method";

@@ -4,6 +4,7 @@
     error_reporting(E_ALL);
     $root = dirname(__FILE__, 2);
     include_once $root.'/include/database.php';
+    include_once $root.'/include/qrcode.php';
 
     class Restaurant {
 
@@ -12,6 +13,8 @@
         public $logo;
         public $active;
         public $get_active_only = false;
+        public $qr_code_link;
+        public $QRPREFIX="DIGITALMENU::";
 
         function get_records () {
 
@@ -90,6 +93,7 @@
                         $this->name = $row['name'];
                         $this->logo = $row['logo'];
                         $this->active = $row['active'];
+                        $this->qr_code_link = $row['qr_code_link'];
                     }
                 // close the result.
                 // mysqli_free_result($result);
@@ -122,6 +126,9 @@
 
             $stmt->close();
 
+            $this->id = $db->get_last_id();
+            $this->generateQRCode();
+
             $db->close();
 
         }
@@ -134,11 +141,12 @@
             update restaurant set
                 name=?,
                 logo=?,
-                active=?
+                active=?,
+                qr_code_link=?
             where id = ?
             ;";
             $stmt = $db->prepare($sql);
-            $stmt->bind_param('ssii', $this->name,$this->logo,$this->active,$this->id);
+            $stmt->bind_param('ssisi', $this->name,$this->logo,$this->active,$this->qr_code_link,$this->id);
 
             $stmt->execute();
 
@@ -184,6 +192,23 @@
                 return $filename;
             }
             return "";
+        }
+
+        function generateQRCode() {
+            $root = dirname(__FILE__, 2);
+            $tempDir = $root."/upload/";
+            $filename=$this->id.".qr.png";
+            
+            $qr = new QRCode();
+            $qr->setErrorCorrectLevel(QR_ERROR_CORRECT_LEVEL_L);
+            $qr->setTypeNumber(4);
+            $qr->addData(base64_encode($this->QRPREFIX.$this->id));
+            $qr->make();
+            $image = $qr->createImage(4);
+            imagepng($image,$tempDir.$filename,3);
+            $this->qr_code_link = "/upload/".$filename;
+            
+            $this->Update();
         }
     }
 ?>

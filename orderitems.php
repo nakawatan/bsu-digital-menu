@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+    include_once "validator.php";
     include 'classes/order_items.php';
     $obj = new OrderItem();
 
@@ -79,7 +80,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; dfs 2022</div>
+                            <div class="text-muted">Copyright &copy; Digital Menu 2022</div>
                         </div>
                     </div>
                 </footer>
