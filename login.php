@@ -42,7 +42,7 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.css" rel="stylesheet">
-    <meta name="google-signin-client_id" content="775340702878-lm3rec066vv65gjr6b6bbdjqckrvljra.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="197088859614-am8cktn3cvp47k5qm5os0sp0bulani9s.apps.googleusercontent.com">
         
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
