@@ -67,6 +67,58 @@
             return $data;
         }
 
+        function get_orders_by_user_id () {
+            $db = new DB();
+            $db->connect();
+
+            $sql = "select a.*,b.firstname as firstname,b.lastname as lastname,c.name as restaurant_name from orders as a
+            inner join users as b
+            on b.id = a.user_id
+            inner join restaurant as c
+            on c.id = a.restaurant_id
+            where a.deleted_at is null";
+
+            $types = "";
+            $params = array();
+            $data = [];
+            if ($this->user_id > 0){
+                $types = $types."i";
+                $sql = $sql . " and a.user_id = ?";
+                $params[] = $this->user_id;
+            }
+
+            if (count($params) > 0){
+                $stmt = $db->prepare($sql);
+                $id = $this->id;
+    
+                // reset id
+                $this->id=0;
+    
+                $stmt->bind_param($types, ...$params);
+    
+                $stmt->execute();
+    
+                $result = $stmt->get_result();
+                $db->close();
+                // return $result;
+                if ($result)
+                {
+                    while($row = $result->fetch_assoc()) {
+                        $data[]=$row;
+                    }
+                }
+            }else {
+                $result=$db->fetch($sql);
+                $db->close();
+
+                while($row = $result->fetch_assoc()) {
+                    $data[]=$row;
+                }
+            }
+            
+            return $data;
+        }
+
         function get_record() {
             $db = new DB();
             $db->connect();

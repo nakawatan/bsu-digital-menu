@@ -655,6 +655,17 @@
                     $result["msg"]="ID must be set";
                 }
                 break;
+            case "get_my_orders":
+                $order = new Order();
+                if (isset($_REQUEST["user_id"])){
+                    $order->user_id = $_REQUEST['user_id'];
+                    $data = $order->get_orders_by_user_id();
+                    $result['orders'] = $data;
+                }else {
+                    $result["status"]="err";
+                    $result["msg"]="User ID must be set";
+                }
+                break;
 
             // voucher api
             case "validate_voucher":

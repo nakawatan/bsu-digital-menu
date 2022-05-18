@@ -202,6 +202,10 @@
                 <h4 class="profile-table-code"><span class="light-text">Balance:</span> <span class="table-code">100.00</span></h4>
 
                 <div class="profile-details--cta">
+                    <a class="btn btn--stroke btn--pill btn--small open-order-history">View Order History</a>
+                </div>
+
+                <div class="profile-details--cta">
                     <a class="btn btn--stroke btn--pill btn--small openLogout">Logout</a>
                 </div>
             </div>
@@ -387,7 +391,7 @@
                             <h4>Total</h4>
                         </div>
                         <div class="col-six cart-receipt--amount cart-receipt--total">
-                            <h4>P 12,345.00</h4>
+                            <h4></h4>
                         </div>
                     </div>
                 </div>
@@ -552,6 +556,53 @@
                         <div class="review-order--cta">
                             <a class="ordering-btn primary-btn rounded-btn block-btn openPaymentMethod">Confirm <i class="mdi mdi-check-all"></i></a>
                             <a class="ordering-btn secondary-btn rounded-btn block-btn close-modal">Cancel <i class="mdi mdi-eye-outline"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-history-modal" class="modal modal-bottom">
+        <div class="modal-content">
+            <div class="modal-wrapper">
+                <header class="header header-top">
+                    <div class="row narrowest header-nav">
+                        <div class="col-two header-nav--btn-left">
+                            <a class="ordering-btn mobile-btn close-modal"></a>
+                        </div>
+                        <div class="col-eight header-nav--center">
+                            <h5>Order History <span class=""></span></h5>
+                        </div>
+                        <div class="col-two header-nav--btn-right">
+    
+                        </div>
+                    </div>
+                </header>
+    
+                <section class="s-order-list">
+                    <div hidden class="row narrowest empty-cart--wrapper">
+                        <div class="col-full">
+                            <div class="empty-cart">
+                                <i class="mdi mdi-shopping-outline"></i>
+                                <h3>Your order list is currently empty.</h3>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row narrowest order-list">
+                        <div class="col-full order-list--wrapper">
+                            <div class="col-full order-list--group">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+                <div class="cta-wrapper cta-bottom">
+                    <div class="row narrowest">
+                        <div class="col-twelve cta--primary">
+                            <a class="btn btn--primary btn--pill full-width close-order-history">Close</a>
                         </div>
                     </div>
                 </div>
@@ -907,7 +958,10 @@
 
         // Review Order Modal
         $('.openReviewOrder').click(function() {
-            $('#reviewOrderModal').fadeIn();
+            var total = calculateTotal();
+            if (total > 0) {
+                $('#reviewOrderModal').fadeIn();
+            }
         })
         $('#reviewOrderModal .close-modal').click(function() {
             $('#reviewOrderModal').fadeOut();
@@ -984,6 +1038,78 @@
         })
         $('#paymentThanksModal .close-modal').click(function() {
             $('#paymentThanksModal').fadeOut();
+        });
+
+        // view order history
+        $('.close-order-history').unbind('click').on('click',function(){
+            $('#view-history-modal').fadeOut();
+        })
+        $('.open-order-history').click(function() {
+            $('.order-list .order-list--group').empty();
+            $.ajax({
+                url: '/api/',
+                data: {
+                    method:"get_my_orders",
+                    user_id:user_id
+                },
+                method: 'POST',
+                dataType:"json",
+                success: function(response) {
+                    if(response.orders.length > 0) {
+                        $('.s-order-list .empty-cart--wrapper').prop('hidden',true);
+
+                        $('.order-list .order-list--group').append(
+                            $('<div>').addClass('col-five order-list--text')
+                            .append(
+                                $('<h4>').text("Restaurant Name")
+                            ),
+                            $('<div>').addClass('col-four order-list--text')
+                            .append(
+                                $('<h4>').text("Status")
+                            ),
+                            $('<div>').addClass('col-three')
+                            .append(
+                                $('<h4>').text("Amount")
+                            )
+                        );
+
+                        $.each(response.orders,function(k,v){
+                            // 1-pending 2-preparing 3-done 4-served 5-cancelled
+                            status = "Pending";
+                            if (v.status == 2) {
+                                status="Preparing";
+                            }
+                            if (v.status == 3) {
+                                status="Done";
+                            }
+                            if (v.status == 4) {
+                                status="Served";
+                            }
+                            if (v.status == 5) {
+                                status="Cancelled";
+                            }
+                            $('.order-list .order-list--group').append(
+                                $('<div>').addClass('col-five order-list--text')
+                                .append(
+                                    $('<h4>').text(v.restaurant_name)
+                                ),
+                                $('<div>').addClass('col-four order-list--text')
+                                .append(
+                                    $('<h4>').text(status)
+                                ),
+                                $('<div>').addClass('col-three')
+                                .append(
+                                    $('<h4>').text("Php. " + v.total)
+                                )
+                            );
+                        });
+                    }else {
+                        $('.s-order-list .empty-cart--wrapper').removeAttr('hidden');
+                    }
+
+                }
+            });
+            $('#view-history-modal').fadeIn();
         });
 
         // Exit App Modal
